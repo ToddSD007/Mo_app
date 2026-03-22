@@ -1,0 +1,159 @@
+{
+  "" : {
+    "diagnostics" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/Mo-primary.dia",
+    "emit-module-dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/Mo-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/Mo-primary-emit-module.dia",
+    "pch" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/Mo-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/Mo-primary.swiftdeps"
+  },
+  "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/Mo/Components/MoTokenView.swift" : {
+    "const-values" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoTokenView.swiftconstvalues",
+    "dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoTokenView.d",
+    "diagnostics" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoTokenView.dia",
+    "index-unit-output-path" : "/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoTokenView.o",
+    "llvm-bc" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoTokenView.bc",
+    "object" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoTokenView.o",
+    "swift-dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoTokenView.swiftdeps",
+    "swiftmodule" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoTokenView~partial.swiftmodule"
+  },
+  "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/Mo/Components/ResultCardView.swift" : {
+    "const-values" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ResultCardView.swiftconstvalues",
+    "dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ResultCardView.d",
+    "diagnostics" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ResultCardView.dia",
+    "index-unit-output-path" : "/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ResultCardView.o",
+    "llvm-bc" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ResultCardView.bc",
+    "object" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ResultCardView.o",
+    "swift-dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ResultCardView.swiftdeps",
+    "swiftmodule" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ResultCardView~partial.swiftmodule"
+  },
+  "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/Mo/ContentView.swift" : {
+    "const-values" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/Mo/MoApp.swift" : {
+    "const-values" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoApp.swiftconstvalues",
+    "dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoApp.d",
+    "diagnostics" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoApp.dia",
+    "index-unit-output-path" : "/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoApp.o",
+    "llvm-bc" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoApp.bc",
+    "object" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoApp.o",
+    "swift-dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoApp.swiftdeps",
+    "swiftmodule" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoApp~partial.swiftmodule"
+  },
+  "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/Mo/Models/Interpretation.swift" : {
+    "const-values" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/Interpretation.swiftconstvalues",
+    "dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/Interpretation.d",
+    "diagnostics" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/Interpretation.dia",
+    "index-unit-output-path" : "/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/Interpretation.o",
+    "llvm-bc" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/Interpretation.bc",
+    "object" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/Interpretation.o",
+    "swift-dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/Interpretation.swiftdeps",
+    "swiftmodule" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/Interpretation~partial.swiftmodule"
+  },
+  "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/Mo/Models/MoEntry.swift" : {
+    "const-values" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoEntry.swiftconstvalues",
+    "dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoEntry.d",
+    "diagnostics" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoEntry.dia",
+    "index-unit-output-path" : "/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoEntry.o",
+    "llvm-bc" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoEntry.bc",
+    "object" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoEntry.o",
+    "swift-dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoEntry.swiftdeps",
+    "swiftmodule" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoEntry~partial.swiftmodule"
+  },
+  "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/Mo/Models/MoReading.swift" : {
+    "const-values" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoReading.swiftconstvalues",
+    "dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoReading.d",
+    "diagnostics" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoReading.dia",
+    "index-unit-output-path" : "/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoReading.o",
+    "llvm-bc" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoReading.bc",
+    "object" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoReading.o",
+    "swift-dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoReading.swiftdeps",
+    "swiftmodule" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoReading~partial.swiftmodule"
+  },
+  "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/Mo/Utilities/MoEntryLoader.swift" : {
+    "const-values" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoEntryLoader.swiftconstvalues",
+    "dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoEntryLoader.d",
+    "diagnostics" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoEntryLoader.dia",
+    "index-unit-output-path" : "/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoEntryLoader.o",
+    "llvm-bc" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoEntryLoader.bc",
+    "object" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoEntryLoader.o",
+    "swift-dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoEntryLoader.swiftdeps",
+    "swiftmodule" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoEntryLoader~partial.swiftmodule"
+  },
+  "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/Mo/Utilities/MoRepository.swift" : {
+    "const-values" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoRepository.swiftconstvalues",
+    "dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoRepository.d",
+    "diagnostics" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoRepository.dia",
+    "index-unit-output-path" : "/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoRepository.o",
+    "llvm-bc" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoRepository.bc",
+    "object" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoRepository.o",
+    "swift-dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoRepository.swiftdeps",
+    "swiftmodule" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoRepository~partial.swiftmodule"
+  },
+  "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/Mo/Utilities/MoTheme.swift" : {
+    "const-values" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoTheme.swiftconstvalues",
+    "dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoTheme.d",
+    "diagnostics" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoTheme.dia",
+    "index-unit-output-path" : "/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoTheme.o",
+    "llvm-bc" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoTheme.bc",
+    "object" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoTheme.o",
+    "swift-dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoTheme.swiftdeps",
+    "swiftmodule" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoTheme~partial.swiftmodule"
+  },
+  "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/Mo/ViewModels/MoAppViewModel.swift" : {
+    "const-values" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoAppViewModel.swiftconstvalues",
+    "dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoAppViewModel.d",
+    "diagnostics" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoAppViewModel.dia",
+    "index-unit-output-path" : "/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoAppViewModel.o",
+    "llvm-bc" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoAppViewModel.bc",
+    "object" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoAppViewModel.o",
+    "swift-dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoAppViewModel.swiftdeps",
+    "swiftmodule" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/MoAppViewModel~partial.swiftmodule"
+  },
+  "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/Mo/Views/HomeView.swift" : {
+    "const-values" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/HomeView.swiftconstvalues",
+    "dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/HomeView.d",
+    "diagnostics" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/HomeView.dia",
+    "index-unit-output-path" : "/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/HomeView.o",
+    "llvm-bc" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/HomeView.bc",
+    "object" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/HomeView.o",
+    "swift-dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/HomeView.swiftdeps",
+    "swiftmodule" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/HomeView~partial.swiftmodule"
+  },
+  "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/Mo/Views/ResultView.swift" : {
+    "const-values" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ResultView.swiftconstvalues",
+    "dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ResultView.d",
+    "diagnostics" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ResultView.dia",
+    "index-unit-output-path" : "/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ResultView.o",
+    "llvm-bc" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ResultView.bc",
+    "object" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ResultView.o",
+    "swift-dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ResultView.swiftdeps",
+    "swiftmodule" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/ResultView~partial.swiftmodule"
+  },
+  "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/Mo/Views/RitualView.swift" : {
+    "const-values" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/RitualView.swiftconstvalues",
+    "dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/RitualView.d",
+    "diagnostics" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/RitualView.dia",
+    "index-unit-output-path" : "/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/RitualView.o",
+    "llvm-bc" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/RitualView.bc",
+    "object" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/RitualView.o",
+    "swift-dependencies" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/RitualView.swiftdeps",
+    "swiftmodule" : "/Users/todddavidson/Desktop/Mo App/Mo_app_wd/.DerivedData/Build/Intermediates.noindex/Mo.build/Debug-iphoneos/Mo.build/Objects-normal/arm64/RitualView~partial.swiftmodule"
+  }
+}
