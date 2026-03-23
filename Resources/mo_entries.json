@@ -1,0 +1,506 @@
+[
+  {
+    "id": 1,
+    "key": "AH_AH",
+    "dice": [6, 6],
+    "syllables": ["AH", "AH"],
+    "title": "The Stainless Sky",
+    "overallTone": "favorable",
+    "summary": "A calm, purifying sign. Conditions are clear and protected, but progress may be steady rather than fast.",
+    "interpretation": {
+      "general": "This is a sign of purification, balance, and removal of obstacles. Your situation is fundamentally safe and supported.",
+      "favorableFor": ["purification", "meditation", "clearing obstacles", "restoring stability"],
+      "caution": "Friends, wealth, or resources may not stay with you unless you care for them intentionally. Some outcomes unfold slowly."
+    }
+  },
+  {
+    "id": 2,
+    "key": "AH_RA",
+    "dice": [6, 2],
+    "syllables": ["AH", "RA"],
+    "title": "The Flaming Rays of the Sun",
+    "overallTone": "very favorable",
+    "summary": "A bright, clarifying sign. Doubt lifts, understanding sharpens, and matters become easier to resolve.",
+    "interpretation": {
+      "general": "This reading favors clarity, discernment, and forward movement. Good results are likely when you act with confidence and virtue.",
+      "favorableFor": ["decision-making", "study", "clear communication", "healing", "receiving news"],
+      "caution": "Projects tied to land, houses, or heavy physical structures may need extra care."
+    }
+  },
+  {
+    "id": 3,
+    "key": "AH_PA",
+    "dice": [6, 3],
+    "syllables": ["AH", "PA"],
+    "title": "The Nectar Rays of the Moon",
+    "overallTone": "favorable",
+    "summary": "A gentle, nourishing sign. Peaceful and supportive actions prosper, especially those requiring care rather than force.",
+    "interpretation": {
+      "general": "This is a soft but auspicious reading. It supports healing, kindness, domestic harmony, and gradual increase.",
+      "favorableFor": ["peaceful efforts", "healing", "women-centered matters", "gentle growth", "domestic well-being"],
+      "caution": "Forceful, aggressive, or fire-related efforts are less favored."
+    }
+  },
+  {
+    "id": 4,
+    "key": "AH_TSA",
+    "dice": [6, 5],
+    "syllables": ["AH", "TSA"],
+    "title": "The Bright Star",
+    "overallTone": "favorable",
+    "summary": "A promising sign for movement, travel, giving, and action taken with steadiness and attention.",
+    "interpretation": {
+      "general": "Good results are available if you stay focused and do not let the mind scatter. Momentum is available, but it must be guided.",
+      "favorableFor": ["travel", "movement", "messages", "charitable acts", "new efforts"],
+      "caution": "Agitation, mental restlessness, and water-related activities may create minor complications."
+    }
+  },
+  {
+    "id": 5,
+    "key": "AH_NA",
+    "dice": [6, 4],
+    "syllables": ["AH", "NA"],
+    "title": "The Ground of Gold",
+    "overallTone": "favorable",
+    "summary": "A stable, grounded sign. Long-term foundations are strong, though progress may take time.",
+    "interpretation": {
+      "general": "This reading supports steady work, remaining rooted, and building something durable. The future is solid if you are patient.",
+      "favorableFor": ["stability", "home life", "long-term planning", "consistent practice", "earth-related matters"],
+      "caution": "Results may come slowly. Communication-heavy or air-like activities may be less reliable."
+    }
+  },
+  {
+    "id": 6,
+    "key": "AH_DHI",
+    "dice": [6, 1],
+    "syllables": ["AH", "DHI"],
+    "title": "The Tone of the Vajra",
+    "overallTone": "very favorable",
+    "summary": "A bright sign for intelligence, learning, artistry, and the fulfillment of thoughtful intentions.",
+    "interpretation": {
+      "general": "This is a refined, auspicious reading that supports study, creativity, scholarship, and clear-minded accomplishment.",
+      "favorableFor": ["learning", "writing", "science", "arts", "scriptural study", "peaceful activities"],
+      "caution": "Do not be distracted by appearances of trouble when the deeper movement is actually favorable."
+    }
+  },
+  {
+    "id": 7,
+    "key": "RA_AH",
+    "dice": [2, 6],
+    "syllables": ["RA", "AH"],
+    "title": "The Bright Lamp",
+    "overallTone": "favorable with health caution",
+    "summary": "A sign of clarity and self-reliance. Plans can succeed, though illness or fatigue may temporarily worsen.",
+    "interpretation": {
+      "general": "Your mind is capable of seeing clearly now. Obstacles are limited, and direct effort can bring success.",
+      "favorableFor": ["self-directed work", "making decisions", "clearing confusion", "starting practical efforts"],
+      "caution": "Health needs attention. Trouble may come from past causes rather than current hostility."
+    }
+  },
+  {
+    "id": 8,
+    "key": "RA_RA",
+    "dice": [2, 2],
+    "syllables": ["RA", "RA"],
+    "title": "Adding Butter to the Burning Flames",
+    "overallTone": "strongly favorable",
+    "summary": "A fiery, energizing sign. Power, attraction, momentum, and rapid accomplishment are amplified.",
+    "interpretation": {
+      "general": "This reading brings force, charisma, and quick movement. It strongly favors decisive action and influence.",
+      "favorableFor": ["powerful action", "rapid progress", "charisma", "visibility", "ritual intensity"],
+      "caution": "Large plans can become messy if they are poorly designed. Earth and water matters are less favored."
+    }
+  },
+  {
+    "id": 9,
+    "key": "RA_PA",
+    "dice": [2, 3],
+    "syllables": ["RA", "PA"],
+    "title": "The Demon of Death",
+    "overallTone": "unfavorable",
+    "summary": "A difficult sign of obstruction, decline, and vulnerability. This is not a time to force outcomes.",
+    "interpretation": {
+      "general": "Plans are easily extinguished under this reading. Delays, losses, or danger may arise if you push ahead carelessly.",
+      "favorableFor": ["postponement", "protective measures", "ritual support", "careful reassessment"],
+      "caution": "Major efforts, travel, illness, and conflict all require caution. This is one of the more severe warnings."
+    }
+  },
+  {
+    "id": 10,
+    "key": "RA_TSA",
+    "dice": [2, 5],
+    "syllables": ["RA", "TSA"],
+    "title": "The King of Power",
+    "overallTone": "strongly favorable",
+    "summary": "A commanding sign of strength, victory, and decisive impact. You have force behind you.",
+    "interpretation": {
+      "general": "This reading favors courageous action, overcoming opposition, and bringing strong intentions into form.",
+      "favorableFor": ["leadership", "subduing obstacles", "assertive action", "winning contests", "protective ritual"],
+      "caution": "Use power wisely. Intensity is high, and overreach or aggression can become excessive."
+    }
+  },
+  {
+    "id": 11,
+    "key": "RA_NA",
+    "dice": [2, 4],
+    "syllables": ["RA", "NA"],
+    "title": "The Dried-Up Tree",
+    "overallTone": "mixed to unfavorable",
+    "summary": "A weak sign. Effort may not bear fruit, and enthusiasm may fade before results arrive.",
+    "interpretation": {
+      "general": "This reading suggests limited yield. What is attempted may dry out or lose momentum before completion.",
+      "favorableFor": ["conserving energy", "tempering expectations", "repairing old issues", "simplifying plans"],
+      "caution": "Do not expect quick gains in wealth, support, or major ambitions."
+    }
+  },
+  {
+    "id": 12,
+    "key": "RA_DHI",
+    "dice": [2, 1],
+    "syllables": ["RA", "DHI"],
+    "title": "The Door of Auspicious Visions",
+    "overallTone": "favorable",
+    "summary": "A good sign of guidance, insight, and beneficial openings. Success comes through good counsel and wise alignment.",
+    "interpretation": {
+      "general": "This reading supports growth through vision, instruction, and spiritual or intuitive clarity.",
+      "favorableFor": ["guidance", "omens", "divination", "creative insight", "timely opportunities"],
+      "caution": "Success improves when you listen to trustworthy advice rather than acting impulsively."
+    }
+  },
+  {
+    "id": 13,
+    "key": "PA_AH",
+    "dice": [3, 6],
+    "syllables": ["PA", "AH"],
+    "title": "The Vase of Nectar",
+    "overallTone": "very favorable",
+    "summary": "A soothing and beneficial sign. Peaceful aims, healing, and support from others are strongly favored.",
+    "interpretation": {
+      "general": "This is a nourishing, restorative reading. Blessings come through receptivity, peace, and alignment with what is wholesome.",
+      "favorableFor": ["healing", "peaceful work", "helping others", "teacher-student relationships", "restoration"],
+      "caution": "Even when successful, outcomes may feel quieter or less dramatic than expected."
+    }
+  },
+  {
+    "id": 14,
+    "key": "PA_RA",
+    "dice": [3, 2],
+    "syllables": ["PA", "RA"],
+    "title": "The Pool Without a Source of Water",
+    "overallTone": "mixed to unfavorable",
+    "summary": "A sign of depletion. Something may appear workable for now, but its source of support is weak.",
+    "interpretation": {
+      "general": "This reading warns of decline through lack of true nourishment or continuity. Gains may not last.",
+      "favorableFor": ["conserving resources", "pulling back", "repair work", "humility"],
+      "caution": "Wealth, energy, and plans may drain away unless renewed at the source."
+    }
+  },
+  {
+    "id": 15,
+    "key": "PA_PA",
+    "dice": [3, 3],
+    "syllables": ["PA", "PA"],
+    "title": "The Ocean of Nectar",
+    "overallTone": "very favorable",
+    "summary": "A rich and abundant sign. Prosperity, nourishment, harmony, and ease of accomplishment are favored.",
+    "interpretation": {
+      "general": "This reading points to fullness, support, and smooth progress. Resources and cooperation tend to increase.",
+      "favorableFor": ["abundance", "food and drink", "peaceful growth", "reconciliation", "well-supported plans"],
+      "caution": "Water-related imbalances or excessive attachment may need attention. Fire-related commitments may be less ideal."
+    }
+  },
+  {
+    "id": 16,
+    "key": "PA_TSA",
+    "dice": [3, 5],
+    "syllables": ["PA", "TSA"],
+    "title": "The Demon of Afflictions",
+    "overallTone": "unfavorable",
+    "summary": "A troubled sign of agitation, conflict, and emotional or energetic disturbance.",
+    "interpretation": {
+      "general": "This reading indicates unrest. Plans may be undermined by anxiety, conflict, hidden opposition, or disruptive conditions.",
+      "favorableFor": ["protective measures", "calming the nervous system", "reducing conflict", "ritual remediation"],
+      "caution": "Conflict, legal trouble, travel mishaps, and stress-related illness are more likely under this sign."
+    }
+  },
+  {
+    "id": 17,
+    "key": "PA_NA",
+    "dice": [3, 4],
+    "syllables": ["PA", "NA"],
+    "title": "The Golden Lotus",
+    "overallTone": "very favorable",
+    "summary": "A beautiful sign of ripening, increase, and beneficial results that grow steadily over time.",
+    "interpretation": {
+      "general": "This reading supports prosperity, influence, generosity, and the gradual maturation of good conditions.",
+      "favorableFor": ["wealth increase", "teaching", "reputation", "supportive relationships", "slow dependable growth"],
+      "caution": "Progress may be slightly slower than desired even when the direction is clearly good."
+    }
+  },
+  {
+    "id": 18,
+    "key": "PA_DHI",
+    "dice": [3, 1],
+    "syllables": ["PA", "DHI"],
+    "title": "The Nectar-Like Medicine",
+    "overallTone": "very favorable",
+    "summary": "A healing and fortunate sign. Plans align well, support is present, and remedies are effective.",
+    "interpretation": {
+      "general": "This reading suggests strong benefit, nourishment, and fulfillment. What you are trying to do can succeed in the form you envision.",
+      "favorableFor": ["healing", "planned goals", "supportive alliances", "medicine", "recovery", "practical success"],
+      "caution": "Success is strongest when you follow good advice rather than improvising carelessly."
+    }
+  },
+  {
+    "id": 19,
+    "key": "TSA_AH",
+    "dice": [5, 6],
+    "syllables": ["TSA", "AH"],
+    "title": "The White Umbrella of Good Fortune",
+    "overallTone": "favorable but uneven",
+    "summary": "A sign of blessing and uplift, with good news and support, though not every promise fully materializes.",
+    "interpretation": {
+      "general": "Fortune rises here, and protection is present. The reading is supportive, especially for encouragement and renewal.",
+      "favorableFor": ["good fortune", "protection", "receiving news", "spiritual practice", "uplift after difficulty"],
+      "caution": "Not every plan becomes concrete. Promises or intentions may lack follow-through."
+    }
+  },
+  {
+    "id": 20,
+    "key": "TSA_RA",
+    "dice": [5, 2],
+    "syllables": ["TSA", "RA"],
+    "title": "The Great Fiery Weapon",
+    "overallTone": "strongly favorable",
+    "summary": "A victorious sign for decisive action, forceful effort, and overcoming opposition.",
+    "interpretation": {
+      "general": "This reading favors triumph, strength, and the successful completion of difficult undertakings.",
+      "favorableFor": ["victory", "strong action", "protection", "cutting through obstacles", "competitive situations"],
+      "caution": "Use force with compassion and restraint. This energy is potent and should not become harsh for its own sake."
+    }
+  },
+  {
+    "id": 21,
+    "key": "TSA_PA",
+    "dice": [5, 3],
+    "syllables": ["TSA", "PA"],
+    "title": "Empty of Intelligence",
+    "overallTone": "unfavorable",
+    "summary": "A sign of confusion, dissipation, and plans slipping through your hands.",
+    "interpretation": {
+      "general": "This reading suggests that worry, distraction, or poor containment are undermining your efforts.",
+      "favorableFor": ["pausing", "simplifying", "reducing loss", "stepping back from conflict"],
+      "caution": "Money, support, and focus may leak away. Avoid pursuing unstable ideas or hostile relationships."
+    }
+  },
+  {
+    "id": 22,
+    "key": "TSA_TSA",
+    "dice": [5, 5],
+    "syllables": ["TSA", "TSA"],
+    "title": "The Streamer of Fame",
+    "overallTone": "favorable",
+    "summary": "A sign of recognition, renown, and visible success. Your name or work can travel widely now.",
+    "interpretation": {
+      "general": "This reading supports success that becomes known publicly. Influence and reputation can increase.",
+      "favorableFor": ["public recognition", "career visibility", "announcements", "victory", "momentum"],
+      "caution": "Excess can undermine itself. Large ambitions may need to be broken into smaller, manageable wins."
+    }
+  },
+  {
+    "id": 23,
+    "key": "TSA_NA",
+    "dice": [5, 4],
+    "syllables": ["TSA", "NA"],
+    "title": "The Mara Demon of the Aggregates",
+    "overallTone": "very unfavorable",
+    "summary": "A heavy warning sign. Core areas of life may feel cut down, obstructed, or destabilized.",
+    "interpretation": {
+      "general": "This reading signals serious obstruction, depletion, or pressure on foundational matters.",
+      "favorableFor": ["protective practice", "caution", "withdrawing from conflict", "seeking support"],
+      "caution": "Family, wealth, health, and luck may all be strained. This is a time for humility and remedial action, not force."
+    }
+  },
+  {
+    "id": 24,
+    "key": "TSA_DHI",
+    "dice": [5, 1],
+    "syllables": ["TSA", "DHI"],
+    "title": "The House of Good Tidings",
+    "overallTone": "very favorable",
+    "summary": "A fast-moving, auspicious sign. Good news, swift success, and helpful connections are favored.",
+    "interpretation": {
+      "general": "This reading supports positive developments that arrive quickly. Communication and relationships are especially blessed.",
+      "favorableFor": ["good news", "networking", "quick results", "travel", "meeting allies"],
+      "caution": "Take advantage of the opening while it is fresh; the energy here is strongest when acted on promptly."
+    }
+  },
+  {
+    "id": 25,
+    "key": "NA_AH",
+    "dice": [4, 6],
+    "syllables": ["NA", "AH"],
+    "title": "The Golden Mountain",
+    "overallTone": "favorable",
+    "summary": "A stable and dignified sign. What has already been established is firm and likely to hold.",
+    "interpretation": {
+      "general": "This reading favors continuity, endurance, and the preservation of what matters most.",
+      "favorableFor": ["stability", "existing commitments", "long-term security", "grounded decisions"],
+      "caution": "Arrival and completion may be delayed, but the underlying result remains favorable."
+    }
+  },
+  {
+    "id": 26,
+    "key": "NA_RA",
+    "dice": [4, 2],
+    "syllables": ["NA", "RA"],
+    "title": "The Demon of the Heavenly Son",
+    "overallTone": "unfavorable",
+    "summary": "A destructive sign of instability, desire-driven error, and serious obstruction.",
+    "interpretation": {
+      "general": "This reading warns that a promising situation may be scorched by impatience, ego, or destabilizing forces.",
+      "favorableFor": ["restraint", "cooling down", "avoiding risk", "protective action"],
+      "caution": "Health, travel, plans, and emotional judgment may all be compromised. Do not rush."
+    }
+  },
+  {
+    "id": 27,
+    "key": "NA_PA",
+    "dice": [4, 3],
+    "syllables": ["NA", "PA"],
+    "title": "The Overflowing Jewelled Vessel",
+    "overallTone": "very favorable",
+    "summary": "A prosperous sign of increase, nourishment, and fortunate return.",
+    "interpretation": {
+      "general": "This reading suggests replenishment, gain, and welcome support. Resources and goodwill gather around you.",
+      "favorableFor": ["prosperity", "return of resources", "food and wealth", "successful plans", "healing"],
+      "caution": "Some things may arrive a little later than hoped, but the direction remains positive."
+    }
+  },
+  {
+    "id": 28,
+    "key": "NA_TSA",
+    "dice": [4, 5],
+    "syllables": ["NA", "TSA"],
+    "title": "The Scattered Mountain of Sand",
+    "overallTone": "unfavorable",
+    "summary": "A sign of erosion and instability. What was built may break apart or lose cohesion.",
+    "interpretation": {
+      "general": "This reading points to gradual deterioration, loss of momentum, or plans being scattered by changing conditions.",
+      "favorableFor": ["damage control", "reassessment", "letting go of weak structures", "protective work"],
+      "caution": "Accumulated resources may diminish, and news or events may bring disappointment."
+    }
+  },
+  {
+    "id": 29,
+    "key": "NA_NA",
+    "dice": [4, 4],
+    "syllables": ["NA", "NA"],
+    "title": "The Mansion of Gold",
+    "overallTone": "very favorable",
+    "summary": "A broad, stable sign of abundance, endurance, and future security.",
+    "interpretation": {
+      "general": "This reading favors lasting prosperity and strong foundations. It suggests ample support over time.",
+      "favorableFor": ["wealth-building", "stable plans", "property", "long-term security", "serious commitments"],
+      "caution": "Some matters may move slowly. Illness may linger, even if the outcome is ultimately safe."
+    }
+  },
+  {
+    "id": 30,
+    "key": "NA_DHI",
+    "dice": [4, 1],
+    "syllables": ["NA", "DHI"],
+    "title": "The Treasury of Jewels",
+    "overallTone": "very favorable",
+    "summary": "A strong sign of stored blessing, fulfilled wishes, and durable prosperity.",
+    "interpretation": {
+      "general": "This reading points to wealth, support, and long-range success emerging from a stable base.",
+      "favorableFor": ["prosperity", "future planning", "resource gathering", "steady healing", "spiritual support"],
+      "caution": "Some results mature over time rather than instantly, but the long view is excellent."
+    }
+  },
+  {
+    "id": 31,
+    "key": "DHI_AH",
+    "dice": [1, 6],
+    "syllables": ["DHI", "AH"],
+    "title": "Manjushri Appears",
+    "overallTone": "very favorable",
+    "summary": "A highly auspicious sign of wisdom, protection, and direct fulfillment.",
+    "interpretation": {
+      "general": "This reading carries a sense of blessing, authority, and aligned success. Support arrives through wisdom and right view.",
+      "favorableFor": ["study", "teaching", "spiritual confidence", "important decisions", "wish fulfillment"],
+      "caution": "Do not let doubt weaken a reading that is fundamentally strong."
+    }
+  },
+  {
+    "id": 32,
+    "key": "DHI_RA",
+    "dice": [1, 2],
+    "syllables": ["DHI", "RA"],
+    "title": "The Endless Auspicious Knot",
+    "overallTone": "very favorable",
+    "summary": "A harmonious sign of beautiful unfolding, mutual support, and success through connection.",
+    "interpretation": {
+      "general": "This reading brings happiness, coherence, and favorable conditions in relationships, place, and decision-making.",
+      "favorableFor": ["harmony", "home life", "partnership", "good decisions", "peaceful success"],
+      "caution": "The energy is excellent; the main task is simply to stay aligned and not create unnecessary complications."
+    }
+  },
+  {
+    "id": 33,
+    "key": "DHI_PA",
+    "dice": [1, 3],
+    "syllables": ["DHI", "PA"],
+    "title": "The Golden Female Fish",
+    "overallTone": "very favorable",
+    "summary": "A sign of agility, luck, and graceful progress. Good fortune moves quickly and naturally.",
+    "interpretation": {
+      "general": "This reading supports successful movement, growing support, and healthy momentum in many areas of life.",
+      "favorableFor": ["good luck", "travel", "steady progress", "healing", "study", "medical learning"],
+      "caution": "The sign is broadly positive; results tend to unfold in good time rather than all at once."
+    }
+  },
+  {
+    "id": 34,
+    "key": "DHI_TSA",
+    "dice": [1, 5],
+    "syllables": ["DHI", "TSA"],
+    "title": "The White Conch",
+    "overallTone": "favorable",
+    "summary": "A sign of reputation, message, and beneficial news. Voice and communication are highlighted.",
+    "interpretation": {
+      "general": "This reading favors teaching, speech, announcements, and becoming known for something worthwhile.",
+      "favorableFor": ["communication", "teaching", "languages", "public speaking", "receiving good news"],
+      "caution": "Mental agitation may accompany illness even when the underlying danger is low."
+    }
+  },
+  {
+    "id": 35,
+    "key": "DHI_NA",
+    "dice": [1, 4],
+    "syllables": ["DHI", "NA"],
+    "title": "The Golden Wheel",
+    "overallTone": "very favorable",
+    "summary": "A sign of prosperity, standing, and stable authority. Long-term success is supported.",
+    "interpretation": {
+      "general": "This reading points to dignity, order, and beneficial control over circumstances.",
+      "favorableFor": ["status", "social standing", "leadership", "long-term prosperity", "stable success"],
+      "caution": "Recovery or completion may take a little longer than hoped, even though the outlook is good."
+    }
+  },
+  {
+    "id": 36,
+    "key": "DHI_DHI",
+    "dice": [1, 1],
+    "syllables": ["DHI", "DHI"],
+    "title": "The Jeweled Banner of Victory",
+    "overallTone": "extremely favorable",
+    "summary": "A triumphant sign of excellence, fulfillment, stability, and victory in what you undertake.",
+    "interpretation": {
+      "general": "This is one of the strongest readings in the system. It indicates powerful accomplishment, protection, and results beyond expectation.",
+      "favorableFor": ["major undertakings", "victory", "wish fulfillment", "strong health", "gathering support", "spiritual success"],
+      "caution": "Success is high, but it should still be carried with humility and care."
+    }
+  }
+]
