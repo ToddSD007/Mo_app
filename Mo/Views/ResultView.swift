@@ -21,7 +21,12 @@ struct ResultView: View {
 
                             HStack(spacing: 24) {
                                 ForEach(Array(reading.syllables.enumerated()), id: \.offset) { item in
-                                    MoTokenView(syllable: item.element, showsLabel: true, size: 96)
+                                    MoTokenView(
+                                        diceValue: reading.diceValues[item.offset],
+                                        syllable: item.element,
+                                        showsLabel: true,
+                                        size: 96
+                                    )
                                 }
                             }
                             .padding(.top, 8)

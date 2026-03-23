@@ -7,6 +7,8 @@ import UIKit
 
 @MainActor
 final class MoAppViewModel: ObservableObject {
+    static let ritualDuration: Duration = .seconds(7)
+
     enum Screen {
         case home
         case ritual
@@ -44,7 +46,7 @@ final class MoAppViewModel: ObservableObject {
 
     func performRitual(for sessionID: UUID) async {
         do {
-            try await Task.sleep(for: .seconds(3))
+            try await Task.sleep(for: Self.ritualDuration)
         } catch {
             return
         }
