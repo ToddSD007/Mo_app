@@ -6,13 +6,13 @@ struct MoTokenView: View {
     var showsLabel: Bool = false
     var size: CGFloat = 104
     var isAnimating: Bool = false
+    var animationDuration: Double = TokenAnimationConfig.defaultDuration
 
     @State private var animatedValue = 1
     @State private var shimmerOffset: CGFloat = -160
     @State private var glyphOpacity = 0.3
     @State private var glyphScale = 0.92
-
-    private let animation = TokenAnimationConfig()
+    @State private var rotationAngle = 0.0
 
     var body: some View {
         VStack(spacing: 12) {
@@ -62,11 +62,10 @@ struct MoTokenView: View {
             }
             .frame(width: size, height: size)
             .rotation3DEffect(
-                .degrees(isAnimating ? 720 : 0),
+                .degrees(rotationAngle),
                 axis: (x: 0.25, y: 1, z: 0.5),
                 perspective: 0.1
             )
-            .animation(.easeInOut(duration: animation.tokenRotationDuration), value: isAnimating)
 
             if showsLabel, let labelSyllable {
                 Text(labelSyllable)
@@ -104,6 +103,7 @@ struct MoTokenView: View {
             shimmerOffset = -160
             glyphOpacity = 0.92
             glyphScale = 1
+            rotationAngle = 0
             return
         }
 
@@ -111,13 +111,18 @@ struct MoTokenView: View {
         shimmerOffset = -160
         glyphOpacity = 0.3
         glyphScale = 0.92
+        rotationAngle = 0
+
+        withAnimation(.easeInOut(duration: animationDuration)) {
+            rotationAngle = 720
+        }
 
         withAnimation(.easeInOut(duration: 1.1).repeatForever(autoreverses: false)) {
             shimmerOffset = 160
         }
 
         let clock = ContinuousClock()
-        let endTime = clock.now.advanced(by: .seconds(animation.glyphLoopDuration))
+        let endTime = clock.now.advanced(by: .seconds(animationDuration))
 
         try? await Task.sleep(for: .seconds(Double.random(in: 0 ... 0.45)))
 
@@ -150,16 +155,12 @@ struct MoTokenView: View {
             glyphOpacity = 0.92
             glyphScale = 1
         }
+        rotationAngle = 0
     }
 }
 
 private struct TokenAnimationConfig {
-    // Keep these aligned so the glyph loop ends when the token rotation ends.
-    // Current: 5.0. Suggested range: 3.0...7.0
-    let tokenRotationDuration = 5.0
-
-    // Current: 5.0. Suggested range: 3.0...7.0
-    let glyphLoopDuration = 5.0
+    static let defaultDuration = 5.0
 }
 
 private enum DiceFace {

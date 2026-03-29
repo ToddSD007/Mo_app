@@ -45,6 +45,8 @@ struct ResultView: View {
                             .padding(.top, 8)
                         }
 
+                        firmnessSection(reading)
+
                         ResultCardView(reading: reading)
                     }
                     .padding(.horizontal, 24)
@@ -78,6 +80,35 @@ struct ResultView: View {
             Spacer()
         }
         .padding(.top, 8)
+    }
+
+    private func firmnessSection(_ reading: MoReading) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("FIRMNESS")
+                .font(MoTheme.bodyFont(size: 14).weight(.semibold))
+                .tracking(2.8)
+                .foregroundStyle(MoTheme.accent)
+
+            Text(reading.firmness.title)
+                .font(MoTheme.bodyFont(size: 20).weight(.medium))
+                .foregroundStyle(MoTheme.primaryText.opacity(0.95))
+
+            Text(reading.firmness.description)
+                .font(MoTheme.bodyFont(size: 17))
+                .foregroundStyle(MoTheme.secondaryText)
+                .lineSpacing(5)
+
+            Text("Second cast: \(reading.secondaryCast.displaySyllables)")
+                .font(MoTheme.bodyFont(size: 15).weight(.medium))
+                .foregroundStyle(MoTheme.secondaryText.opacity(0.85))
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(24)
+        .background(
+            RoundedRectangle(cornerRadius: 28, style: .continuous)
+                .fill(MoTheme.cardBackground)
+                .shadow(color: MoTheme.shadow, radius: 16, x: 0, y: 7)
+        )
     }
 }
 

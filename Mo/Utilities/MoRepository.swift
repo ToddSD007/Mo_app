@@ -30,14 +30,31 @@ struct MoRepository {
         Self.syllableMap[diceValue, default: "DHI"]
     }
 
-    func reading(for diceValues: [Int]) -> MoReading? {
+    func castPair(for diceValues: [Int]) -> MoCastPair {
         let syllables = diceValues.map(syllable(for:))
         let key = syllables.joined(separator: "_")
 
-        guard let entry = entriesByKey[key] else {
+        return MoCastPair(diceValues: diceValues, syllables: syllables, key: key)
+    }
+
+    func entry(for key: String) -> MoEntry? {
+        entriesByKey[key]
+    }
+
+    func reading(
+        primaryCast: MoCastPair,
+        secondaryCast: MoCastPair,
+        firmness: MoFirmness
+    ) -> MoReading? {
+        guard let entry = entry(for: primaryCast.key) else {
             return nil
         }
 
-        return MoReading(diceValues: diceValues, syllables: syllables, key: key, entry: entry)
+        return MoReading(
+            primaryCast: primaryCast,
+            secondaryCast: secondaryCast,
+            firmness: firmness,
+            entry: entry
+        )
     }
 }

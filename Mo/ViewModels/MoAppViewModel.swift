@@ -5,9 +5,20 @@ import SwiftUI
 import UIKit
 #endif
 
+enum MoRitualTiming {
+    static let primaryCastDuration = 3.0
+    static let pauseDuration = 0.75
+    static let secondaryCastDuration = 2.25
+    static let settleDuration = 2.25
+
+    static let totalDuration: Duration = .seconds(
+        primaryCastDuration + pauseDuration + secondaryCastDuration + settleDuration
+    )
+}
+
 @MainActor
 final class MoAppViewModel: ObservableObject {
-    static let ritualDuration: Duration = .seconds(7)
+    static let ritualDuration = MoRitualTiming.totalDuration
 
     enum Screen {
         case home
@@ -17,9 +28,12 @@ final class MoAppViewModel: ObservableObject {
 
     @Published private(set) var screen: Screen = .home
     @Published private(set) var currentReading: MoReading?
+    @Published private(set) var ritualPrimaryCast: MoCastPair = .placeholder
+    @Published private(set) var ritualSecondaryCast: MoCastPair = .placeholder
     @Published private(set) var ritualSessionID = UUID()
 
     private let repository: MoRepository
+    private var pendingReading: MoReading?
 
     init(repository: MoRepository) {
         self.repository = repository
@@ -37,6 +51,9 @@ final class MoAppViewModel: ObservableObject {
 
     func beginRitual() {
         currentReading = nil
+        pendingReading = makePendingReading()
+        ritualPrimaryCast = pendingReading?.primaryCast ?? .placeholder
+        ritualSecondaryCast = pendingReading?.secondaryCast ?? .placeholder
         ritualSessionID = UUID()
 
         withAnimation(.easeInOut(duration: 0.6)) {
@@ -55,14 +72,13 @@ final class MoAppViewModel: ObservableObject {
             return
         }
 
-        let diceValues = [Int.random(in: 1...6), Int.random(in: 1...6)]
-
-        guard let reading = repository.reading(for: diceValues) else {
-            assertionFailure("Missing Mo entry for dice values: \(diceValues)")
+        guard let reading = pendingReading else {
+            assertionFailure("Missing pending reading for ritual session: \(sessionID)")
             return
         }
 
         currentReading = reading
+        pendingReading = nil
         emitHaptic()
 
         withAnimation(.easeInOut(duration: 0.7)) {
@@ -72,10 +88,31 @@ final class MoAppViewModel: ObservableObject {
 
     func returnHome() {
         currentReading = nil
+        pendingReading = nil
+        ritualPrimaryCast = .placeholder
+        ritualSecondaryCast = .placeholder
 
         withAnimation(.easeInOut(duration: 0.6)) {
             screen = .home
         }
+    }
+
+    private func makePendingReading() -> MoReading? {
+        for _ in 0..<50 {
+            let primaryCast = repository.castPair(for: [Int.random(in: 1...6), Int.random(in: 1...6)])
+            let secondaryCast = repository.castPair(for: [Int.random(in: 1...6), Int.random(in: 1...6)])
+            let firmness = MoFirmnessEvaluator.evaluate(primary: primaryCast, secondary: secondaryCast)
+
+            if let reading = repository.reading(
+                primaryCast: primaryCast,
+                secondaryCast: secondaryCast,
+                firmness: firmness
+            ) {
+                return reading
+            }
+        }
+
+        return nil
     }
 
     private func emitHaptic() {
@@ -109,10 +146,13 @@ extension MoAppViewModel {
     }
 
     func loadPreviewReading() {
+        let primaryCast = MoCastPair(diceValues: [2, 1], syllables: ["RA", "DHI"], key: "RA_DHI")
+        let secondaryCast = MoCastPair(diceValues: [3, 6], syllables: ["PA", "AH"], key: "PA_AH")
+
         currentReading = MoReading(
-            diceValues: [2, 1],
-            syllables: ["RA", "DHI"],
-            key: "RA_DHI",
+            primaryCast: primaryCast,
+            secondaryCast: secondaryCast,
+            firmness: .standard,
             entry: Self.previewEntry
         )
         screen = .result
