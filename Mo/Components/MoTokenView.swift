@@ -12,6 +12,8 @@ struct MoTokenView: View {
     @State private var glyphOpacity = 0.3
     @State private var glyphScale = 0.92
 
+    private let animation = TokenAnimationConfig()
+
     var body: some View {
         VStack(spacing: 12) {
             ZStack {
@@ -60,11 +62,11 @@ struct MoTokenView: View {
             }
             .frame(width: size, height: size)
             .rotation3DEffect(
-                .degrees(isAnimating ? 10 : 0),
-                axis: (x: 0.25, y: 1, z: 0),
-                perspective: 0.55
+                .degrees(isAnimating ? 720 : 0),
+                axis: (x: 0.25, y: 1, z: 0.5),
+                perspective: 0.1
             )
-            .animation(.easeInOut(duration: 2.8), value: isAnimating)
+            .animation(.easeInOut(duration: animation.tokenRotationDuration), value: isAnimating)
 
             if showsLabel, let labelSyllable {
                 Text(labelSyllable)
@@ -114,9 +116,12 @@ struct MoTokenView: View {
             shimmerOffset = 160
         }
 
+        let clock = ContinuousClock()
+        let endTime = clock.now.advanced(by: .seconds(animation.glyphLoopDuration))
+
         try? await Task.sleep(for: .seconds(Double.random(in: 0 ... 0.45)))
 
-        while isAnimating && !Task.isCancelled {
+        while isAnimating && !Task.isCancelled && clock.now < endTime {
             withAnimation(.easeInOut(duration: 0.42)) {
                 glyphOpacity = 0.96
                 glyphScale = 1.06
@@ -146,6 +151,15 @@ struct MoTokenView: View {
             glyphScale = 1
         }
     }
+}
+
+private struct TokenAnimationConfig {
+    // Keep these aligned so the glyph loop ends when the token rotation ends.
+    // Current: 5.0. Suggested range: 3.0...7.0
+    let tokenRotationDuration = 5.0
+
+    // Current: 5.0. Suggested range: 3.0...7.0
+    let glyphLoopDuration = 5.0
 }
 
 private enum DiceFace {

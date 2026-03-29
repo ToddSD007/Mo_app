@@ -5,10 +5,14 @@ struct RitualView: View {
 
     @State private var animateTokens = false
     @State private var animateGlow = false
-    @State private var syllableOpacities = Array(repeating: 0.0, count: 7)
+    @State private var wheelRotation = 0.0
 
-    private let animation = MantraAnimationConfig()
-    private let mantraSyllables = ["ཨོཾ", "ཨ", "ར", "པ", "ཙ", "ན", "དྷཱིཿ  "]
+    private let wheelSyllables = ["ཨོཾ", "ཨ", "ར", "པ", "ཙ", "ན"]
+    private let centerSyllable = "དྷཱི"
+    private let wheelRadius: CGFloat = 80
+    private let wheelGlyphSize: CGFloat = 42
+    private let centerGlyphSize: CGFloat = 68
+    private let wheelGlowRadius: CGFloat = 48
 
     var body: some View {
         ZStack {
@@ -23,20 +27,39 @@ struct RitualView: View {
                     .tracking(5.6)
                     .foregroundStyle(MoTheme.secondaryText.opacity(0.6))
                     .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: 260)
 
-                HStack(spacing: 0) {
-                    ForEach(Array(mantraSyllables.enumerated()), id: \.offset) { index, syllable in
-                        Text(index == mantraSyllables.count - 1 ? syllable : "\(syllable)་")
-                            .opacity(syllableOpacities[index])
+                ZStack {
+                    ZStack {
+                        ForEach(Array(wheelSyllables.enumerated()), id: \.offset) { index, syllable in
+                            let angle = Angle.degrees(Double(index) * (360.0 / Double(wheelSyllables.count)) - 90)
+
+                            ZStack {
+                                Text(syllable)
+                                    .font(MoTheme.headingFont(size: wheelGlyphSize))
+                                    .foregroundStyle(Color(hex: 0xF6E7B7).opacity(animateGlow ? 0.95 : 0.45))
+                                    .blur(radius: animateGlow ? wheelGlowRadius * 0.44 : wheelGlowRadius * 0.16)
+
+                                Text(syllable)
+                                    .font(MoTheme.headingFont(size: wheelGlyphSize))
+                                    .foregroundStyle(wheelGlyphColor)
+                                    .shadow(color: MoTheme.accent.opacity(0.28), radius: 8, x: 0, y: 2)
+                            }
+                                .rotationEffect(.degrees(0))
+                                .offset(y: -wheelRadius)
+                                .rotationEffect(angle)
+                        }
                     }
+                    .rotationEffect(.degrees(wheelRotation))
+
+                    Text(centerSyllable)
+                        .font(MoTheme.headingFont(size: centerGlyphSize))
+                        .foregroundStyle(wheelGlyphColor)
+                        .shadow(color: MoTheme.accent.opacity(animateGlow ? 0.25 : 0.18), radius: 14, x: 0, y: 4)
                 }
-                .font(MoTheme.headingFont(size: 52))
-                .foregroundStyle(MoTheme.accent)
-                .shadow(
-                    color: MoTheme.accent.opacity(animateGlow ? 0.55 : 0.22),
-                    radius: animateGlow ? 22 : 10
-                )
-                .frame(maxWidth: 360, minHeight: 140)
+                .frame(width: 340, height: 340)
                 .multilineTextAlignment(.center)
 
                 Text("OM AH RA PA TSA NA DHI")
@@ -53,25 +76,45 @@ struct RitualView: View {
 
                 Text("Consulting the wisdom...")
                     .font(MoTheme.bodyFont(size: 18))
-                    .foregroundStyle(MoTheme.secondaryText.opacity(0.25))
+                    .foregroundStyle(MoTheme.secondaryText.opacity(0.75))
                     .padding(.top, 18)
 
                 Spacer()
             }
             .padding(.horizontal, 28)
-            .padding(.vertical, 36)
+            .padding(.vertical, 32)
         }
         .task(id: viewModel.ritualSessionID) {
             async let ritualTask: Void = viewModel.performRitual(for: viewModel.ritualSessionID)
-            await runMantraAnimation()
+            runWheelAnimation()
+            await runRitualAnimation()
             _ = await ritualTask
         }
     }
 
-    private func runMantraAnimation() async {
+    private var wheelGlyphColor: some ShapeStyle {
+        LinearGradient(
+            colors: [
+                Color(hex: 0xF2DC9B),
+                MoTheme.accent,
+                Color(hex: 0xC89A32)
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+
+    private func runWheelAnimation() {
+        wheelRotation = 0
+
+        withAnimation(.linear(duration: 3).repeatForever(autoreverses: false)) {
+            wheelRotation = 360
+        }
+    }
+
+    private func runRitualAnimation() async {
         animateTokens = false
         animateGlow = false
-        syllableOpacities = Array(repeating: animation.hiddenOpacity, count: mantraSyllables.count)
 
         withAnimation(.easeInOut(duration: 1.8).repeatForever(autoreverses: true)) {
             animateGlow = true
@@ -80,59 +123,8 @@ struct RitualView: View {
         withAnimation(.easeInOut(duration: 3)) {
             animateTokens = true
         }
-
-        for _ in 0..<2 {
-            for index in mantraSyllables.indices {
-                guard !Task.isCancelled else { return }
-
-                withAnimation(.easeInOut(duration: animation.syllableFadeInDuration)) {
-                    syllableOpacities[index] = animation.visibleOpacity
-                }
-                try? await Task.sleep(
-                    for: .seconds(animation.syllableFadeInDuration + animation.syllableHoldDuration)
-                )
-
-                withAnimation(.easeInOut(duration: animation.syllableFadeOutDuration)) {
-                    syllableOpacities[index] = animation.hiddenOpacity
-                }
-                try? await Task.sleep(for: .seconds(animation.syllableFadeOutDuration))
-            }
-        }
-
-        for index in mantraSyllables.indices {
-            guard !Task.isCancelled else { return }
-
-            withAnimation(.easeInOut(duration: animation.finalRevealDuration)) {
-                syllableOpacities[index] = animation.visibleOpacity
-            }
-            try? await Task.sleep(
-                for: .seconds(animation.finalRevealDuration + animation.finalRevealHoldDuration)
-            )
-        }
+        try? await Task.sleep(for: .seconds(0.1))
     }
-}
-
-private struct MantraAnimationConfig {
-    // Current: 1.0. Suggested range: 0.85...1.0
-    let visibleOpacity = 1.0
-
-    // Current: 0.06. Suggested range: 0.0...0.15
-    let hiddenOpacity = 0.04
-
-    // Current: 0.2. Suggested range: 0.15...0.45
-    let syllableFadeInDuration = 0.1
-
-    // Current: 0.03. Suggested range: 0.0...0.12
-    let syllableHoldDuration = 0.06
-
-    // Current: 0.2. Suggested range: 0.15...0.45
-    let syllableFadeOutDuration = 0.1
-
-    // Current: 0.18. Suggested range: 0.12...0.35
-    let finalRevealDuration = 0.13
-
-    // Current: 0.02. Suggested range: 0.0...0.1
-    let finalRevealHoldDuration = 0.15
 }
 
 struct RitualView_Previews: PreviewProvider {
