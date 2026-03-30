@@ -47,6 +47,8 @@ struct ResultView: View {
 
                         firmnessSection(reading)
 
+                        summarySection(reading)
+
                         ResultCardView(reading: reading)
                     }
                     .padding(.horizontal, 24)
@@ -101,6 +103,27 @@ struct ResultView: View {
             Text("Second cast: \(reading.secondaryCast.displaySyllables)")
                 .font(MoTheme.bodyFont(size: 15).weight(.medium))
                 .foregroundStyle(MoTheme.secondaryText.opacity(0.85))
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(24)
+        .background(
+            RoundedRectangle(cornerRadius: 28, style: .continuous)
+                .fill(MoTheme.cardBackground)
+                .shadow(color: MoTheme.shadow, radius: 16, x: 0, y: 7)
+        )
+    }
+
+    private func summarySection(_ reading: MoReading) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("SUMMARY")
+                .font(MoTheme.bodyFont(size: 14).weight(.semibold))
+                .tracking(2.8)
+                .foregroundStyle(MoTheme.secondaryText)
+
+            Text(reading.entry.summary)
+                .font(MoTheme.bodyFont(size: 22))
+                .foregroundStyle(MoTheme.primaryText)
+                .lineSpacing(8)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(24)

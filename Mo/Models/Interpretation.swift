@@ -1,7 +1,9 @@
 import Foundation
 
 struct Interpretation: Decodable {
-    let general: String
+    let meaning: String
+    let meaningShort: String
+    let spiritualPractice: String
     let favorableFor: [String]
     let caution: String
 }

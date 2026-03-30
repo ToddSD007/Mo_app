@@ -9,22 +9,26 @@ struct ResultCardView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 28) {
-            sectionTitle("SUMMARY")
+            sectionTitle("MEANING")
 
-            Text(reading.entry.summary)
-                .font(MoTheme.bodyFont(size: 22))
-                .foregroundStyle(MoTheme.primaryText)
-                .lineSpacing(8)
-
-            Divider()
-                .overlay(MoTheme.secondaryText.opacity(0.18))
-
-            sectionTitle("GUIDANCE")
-
-            Text(reading.entry.interpretation.general)
+            Text(reading.entry.interpretation.meaning)
                 .font(MoTheme.bodyFont(size: 19))
                 .foregroundStyle(MoTheme.primaryText.opacity(0.95))
                 .lineSpacing(7)
+
+            sectionTitle("SPIRITUAL PRACTICE")
+
+            Text(reading.entry.interpretation.spiritualPractice)
+                .font(MoTheme.bodyFont(size: 19))
+                .foregroundStyle(MoTheme.primaryText.opacity(0.95))
+                .lineSpacing(7)
+
+            sectionTitle("IN BRIEF")
+
+            Text(reading.entry.interpretation.meaningShort)
+                .font(MoTheme.bodyFont(size: 22))
+                .foregroundStyle(MoTheme.primaryText)
+                .lineSpacing(8)
 
             sectionTitle("FAVORABLE FOR")
 

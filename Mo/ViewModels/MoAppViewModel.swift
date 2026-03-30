@@ -134,7 +134,9 @@ extension MoAppViewModel {
         overallTone: "favorable",
         summary: "A good sign of guidance, insight, and beneficial openings. Success comes through good counsel and wise alignment.",
         interpretation: Interpretation(
-            general: "This reading supports growth through vision, instruction, and spiritual or intuitive clarity.",
+            meaning: "This result favors openings that come through good guidance rather than solitary force. Intentions can succeed when shaped by wise friends, teachers, or ritual instruction.",
+            meaningShort: "Guidance opens the way to success.",
+            spiritualPractice: "Spiritual practice is favorable, especially where purification of conduct, vows, or precepts is concerned.",
             favorableFor: ["guidance", "omens", "divination", "creative insight"],
             caution: "Success improves when you listen to trustworthy advice rather than acting impulsively."
         )
