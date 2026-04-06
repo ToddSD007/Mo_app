@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ResultView: View {
     @ObservedObject var viewModel: MoAppViewModel
+    let onOpenMenu: () -> Void
 
     var body: some View {
         ZStack {
@@ -47,7 +48,7 @@ struct ResultView: View {
 
                         firmnessSection(reading)
 
-                        summarySection(reading)
+                        SummaryCardView(entry: reading.entry)
 
                         ResultCardView(reading: reading)
                     }
@@ -60,6 +61,7 @@ struct ResultView: View {
                 }
             }
         }
+        .toolbar(.hidden, for: .navigationBar)
     }
 
     private var header: some View {
@@ -80,6 +82,21 @@ struct ResultView: View {
             }
 
             Spacer()
+
+            Button(action: onOpenMenu) {
+                Image(systemName: "plus")
+                    .font(.system(size: 18, weight: .medium))
+                    .foregroundStyle(MoTheme.secondaryText)
+                    .frame(width: 44, height: 44)
+                    .background(
+                        Circle()
+                            .fill(Color.white.opacity(0.7))
+                    )
+                    .overlay(
+                        Circle()
+                            .stroke(MoTheme.accent.opacity(0.1), lineWidth: 1)
+                    )
+            }
         }
         .padding(.top, 8)
     }
@@ -112,27 +129,6 @@ struct ResultView: View {
                 .shadow(color: MoTheme.shadow, radius: 16, x: 0, y: 7)
         )
     }
-
-    private func summarySection(_ reading: MoReading) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("SUMMARY")
-                .font(MoTheme.bodyFont(size: 14).weight(.semibold))
-                .tracking(2.8)
-                .foregroundStyle(MoTheme.secondaryText)
-
-            Text(reading.entry.summary)
-                .font(MoTheme.bodyFont(size: 22))
-                .foregroundStyle(MoTheme.primaryText)
-                .lineSpacing(8)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(24)
-        .background(
-            RoundedRectangle(cornerRadius: 28, style: .continuous)
-                .fill(MoTheme.cardBackground)
-                .shadow(color: MoTheme.shadow, radius: 16, x: 0, y: 7)
-        )
-    }
 }
 
 struct ResultView_Previews: PreviewProvider {
@@ -149,6 +145,6 @@ private struct ResultPreviewContainer: View {
     }()
 
     var body: some View {
-        ResultView(viewModel: viewModel)
+        ResultView(viewModel: viewModel, onOpenMenu: {})
     }
 }

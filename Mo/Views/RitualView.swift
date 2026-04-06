@@ -115,6 +115,7 @@ struct RitualView: View {
             await runRitualAnimation()
             _ = await ritualTask
         }
+        .toolbar(.hidden, for: .navigationBar)
     }
 
     private var wheelGlyphColor: some ShapeStyle {

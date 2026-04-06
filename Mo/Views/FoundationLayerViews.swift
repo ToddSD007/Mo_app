@@ -8,14 +8,11 @@ enum AppMenuDestination: Hashable {
 
 struct HomeMenuSheet: View {
     let onSelect: (AppMenuDestination) -> Void
+    @State private var measuredHeight: CGFloat = 320
 
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 22) {
-                Text("Explore")
-                    .font(MoTheme.headingFont(size: 30))
-                    .foregroundStyle(MoTheme.primaryText)
-
                 menuButton(title: "Introduction", subtitle: "What Mo is and how to approach it.") {
                     onSelect(.introduction)
                 }
@@ -24,14 +21,22 @@ struct HomeMenuSheet: View {
                     onSelect(.howToConsult)
                 }
 
-                menuButton(title: "Entries", subtitle: "Browse the 36 Mo results as a study reference.") {
+                menuButton(title: "The 36 Divinations", subtitle: "Browse the full cycle of Mo results as a study reference.") {
                     onSelect(.entries)
                 }
-
-                Spacer(minLength: 0)
             }
+            .frame(maxWidth: .infinity, alignment: .topLeading)
             .padding(28)
-            .presentationDetents([.height(330)])
+            .background(
+                GeometryReader { geometry in
+                    Color.clear
+                        .preference(key: MenuSheetHeightPreferenceKey.self, value: geometry.size.height)
+                }
+            )
+            .onPreferenceChange(MenuSheetHeightPreferenceKey.self) { height in
+                measuredHeight = max(height, 260)
+            }
+            .presentationDetents([.height(measuredHeight)])
             .presentationDragIndicator(.visible)
             .background(MoTheme.background)
         }
@@ -48,6 +53,8 @@ struct HomeMenuSheet: View {
                     .font(MoTheme.bodyFont(size: 15))
                     .foregroundStyle(MoTheme.secondaryText)
                     .multilineTextAlignment(.leading)
+                    .lineLimit(3)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(18)
@@ -58,6 +65,14 @@ struct HomeMenuSheet: View {
             )
         }
         .buttonStyle(.plain)
+    }
+}
+
+private struct MenuSheetHeightPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = 320
+
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = max(value, nextValue())
     }
 }
 
@@ -296,8 +311,6 @@ struct IntroductionView: View {
                 )
             ]
         )
-        .navigationTitle("Introduction")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -390,13 +403,13 @@ struct HowToConsultView: View {
                     title: "Ask One Question at a Time",
                     body: [
                         "If several concerns are entangled, choose the one that most needs light.",
-                        "Not:",
-                        "But rather:",
                         "One clear question leads to one interpretable answer."
                     ],
+                    bulletsTitle: "Not:",
                     bullets: [
                         "Should I move, leave my relationship, change jobs, and start a new practice?"
                     ],
+                    followUpTitle: "But rather:",
                     followUpBullets: [
                         "Is it favorable to make this move now?",
                         "What are the conditions around this relationship now?",
@@ -443,15 +456,15 @@ struct HowToConsultView: View {
                 )
             ]
         )
-        .navigationTitle("How to Consult")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 private struct EditorialSection {
     let title: String
     let body: [String]
+    var bulletsTitle: String?
     var bullets: [String] = []
+    var followUpTitle: String?
     var followUpBullets: [String] = []
     var closingTitle: String?
     var closingBullets: [String] = []
@@ -459,16 +472,18 @@ private struct EditorialSection {
 }
 
 private struct EditorialArticleView: View {
-    let title: String
+    let title: String?
     let sections: [EditorialSection]
 
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 28) {
-                Text(title)
-                    .font(MoTheme.headingFont(size: 42))
-                    .foregroundStyle(MoTheme.primaryText)
-                    .padding(.top, 12)
+                if let title {
+                    Text(title)
+                        .font(MoTheme.headingFont(size: 42))
+                        .foregroundStyle(MoTheme.primaryText)
+                        .padding(.top, 12)
+                }
 
                 ForEach(Array(sections.enumerated()), id: \.offset) { index, section in
                     VStack(alignment: .leading, spacing: 16) {
@@ -485,10 +500,24 @@ private struct EditorialArticleView: View {
                         }
 
                         if !section.bullets.isEmpty {
+                            if let bulletsTitle = section.bulletsTitle {
+                                Text(bulletsTitle)
+                                    .font(MoTheme.bodyFont(size: 18).weight(.medium))
+                                    .foregroundStyle(MoTheme.secondaryText)
+                                    .padding(.top, 2)
+                            }
+
                             bulletList(section.bullets)
                         }
 
                         if !section.followUpBullets.isEmpty {
+                            if let followUpTitle = section.followUpTitle {
+                                Text(followUpTitle)
+                                    .font(MoTheme.bodyFont(size: 18).weight(.medium))
+                                    .foregroundStyle(MoTheme.secondaryText)
+                                    .padding(.top, 2)
+                            }
+
                             bulletList(section.followUpBullets)
                         }
 
@@ -554,12 +583,12 @@ struct EntriesView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 18) {
-                Text("The 36 Entries")
+                Text("The 36 Divinations")
                     .font(MoTheme.headingFont(size: 40))
                     .foregroundStyle(MoTheme.primaryText)
                     .padding(.top, 12)
 
-                Text("A quiet reference for study and familiarity. Browse the full cycle without entering the ritual flow.")
+                Text("A reference for study and familiarity. Browse the full cycle without entering the ritual flow.")
                     .font(MoTheme.bodyFont(size: 18))
                     .foregroundStyle(MoTheme.secondaryText)
                     .lineSpacing(6)
@@ -567,6 +596,8 @@ struct EntriesView: View {
                 if !entries.isEmpty {
                     TextField("Search titles or syllables", text: $searchText)
                         .font(MoTheme.bodyFont(size: 17))
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled(true)
                         .padding(.horizontal, 16)
                         .padding(.vertical, 14)
                         .background(
@@ -591,8 +622,6 @@ struct EntriesView: View {
             .padding(.bottom, 36)
         }
         .background(MoTheme.background.ignoresSafeArea())
-        .navigationTitle("Entries")
-        .navigationBarTitleDisplayMode(.inline)
     }
 
     private var filteredEntries: [MoEntry] {
@@ -652,11 +681,6 @@ struct EntryDetailView: View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 28) {
                 VStack(spacing: 18) {
-                    Text("REFERENCE ENTRY")
-                        .font(MoTheme.bodyFont(size: 18).weight(.medium))
-                        .tracking(4.8)
-                        .foregroundStyle(MoTheme.secondaryText.opacity(0.55))
-
                     HStack(spacing: 24) {
                         ForEach(Array(entry.syllables.enumerated()), id: \.offset) { item in
                             MoTokenView(
@@ -691,7 +715,5 @@ struct EntryDetailView: View {
             .padding(.bottom, 42)
         }
         .background(MoTheme.background.ignoresSafeArea())
-        .navigationTitle("Entry")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }

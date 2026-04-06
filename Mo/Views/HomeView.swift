@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HomeView: View {
     @ObservedObject var viewModel: MoAppViewModel
+    let onOpenMenu: () -> Void
 
     var body: some View {
         GeometryReader { geometry in
@@ -62,11 +63,35 @@ struct HomeView: View {
         }
         .ignoresSafeArea()
         .statusBarHidden(false)
+        .safeAreaInset(edge: .top) {
+            HStack {
+                Spacer()
+
+                menuButton
+            }
+            .padding(.horizontal, 22)
+            .padding(.top, 8)
+        }
+        .toolbar(.hidden, for: .navigationBar)
+    }
+
+    private var menuButton: some View {
+        Button(action: onOpenMenu) {
+            Image(systemName: "plus")
+                .font(.system(size: 18, weight: .medium))
+                .foregroundStyle(.white.opacity(0.96))
+                .frame(width: 42, height: 42)
+                .background(Color.black.opacity(0.28), in: Circle())
+                .overlay(
+                    Circle()
+                        .stroke(Color.white.opacity(0.22), lineWidth: 1)
+                )
+        }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(viewModel: .makePreview())
+        HomeView(viewModel: .makePreview(), onOpenMenu: {})
     }
 }
