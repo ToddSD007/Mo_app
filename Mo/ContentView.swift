@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = MoAppViewModel.makeLive()
-    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
+    @AppStorage("shouldSkipOnboarding") private var shouldSkipOnboarding = false
 
     @State private var navigationPath: [AppMenuDestination] = []
     @State private var showsMenu = false
@@ -41,13 +41,13 @@ struct ContentView: View {
                 }
             }
             .fullScreenCover(isPresented: $showsOnboarding) {
-                OnboardingView {
-                    hasCompletedOnboarding = true
+                OnboardingView { skipFutureLaunches in
+                    shouldSkipOnboarding = skipFutureLaunches
                     showsOnboarding = false
                 }
             }
             .onAppear {
-                if !hasCompletedOnboarding {
+                if !shouldSkipOnboarding {
                     showsOnboarding = true
                 }
             }

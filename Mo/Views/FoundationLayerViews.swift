@@ -77,9 +77,10 @@ private struct MenuSheetHeightPreferenceKey: PreferenceKey {
 }
 
 struct OnboardingView: View {
-    let onBegin: () -> Void
+    let onBegin: (Bool) -> Void
 
     @State private var selection = 0
+    @State private var shouldSkipFutureLaunches = false
 
     private let pages: [OnboardingPage] = [
         OnboardingPage(
@@ -144,36 +145,63 @@ struct OnboardingView: View {
                 }
                 .tabViewStyle(.page(indexDisplayMode: .always))
 
-                HStack(spacing: 12) {
-                    if selection > 0 {
-                        Button("Back") {
-                            withAnimation(.easeInOut(duration: 0.25)) {
-                                selection -= 1
-                            }
+                VStack(spacing: 14) {
+                    Button {
+                        shouldSkipFutureLaunches.toggle()
+                    } label: {
+                        HStack(spacing: 10) {
+                            Image(systemName: shouldSkipFutureLaunches ? "checkmark.square.fill" : "square")
+                                .font(.system(size: 20, weight: .medium))
+
+                            Text("Don't show this again")
+                                .font(MoTheme.bodyFont(size: 16).weight(.medium))
                         }
-                        .font(MoTheme.bodyFont(size: 17).weight(.medium))
                         .foregroundStyle(MoTheme.secondaryText)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
+                    .buttonStyle(.plain)
 
-                    Spacer()
+                    HStack(spacing: 12) {
+                        if selection > 0 {
+                            Button("Back") {
+                                withAnimation(.easeInOut(duration: 0.25)) {
+                                    selection -= 1
+                                }
+                            }
+                            .font(MoTheme.bodyFont(size: 17).weight(.medium))
+                            .foregroundStyle(MoTheme.secondaryText)
+                        }
 
-                    Button(selection == pages.count - 1 ? "Begin" : "Next") {
-                        if selection == pages.count - 1 {
-                            onBegin()
-                        } else {
-                            withAnimation(.easeInOut(duration: 0.25)) {
-                                selection += 1
+                        Spacer()
+
+                        Button(selection == pages.count - 1 ? "Begin" : "Next") {
+                            if selection == pages.count - 1 {
+                                onBegin(shouldSkipFutureLaunches)
+                            } else {
+                                withAnimation(.easeInOut(duration: 0.25)) {
+                                    selection += 1
+                                }
                             }
                         }
+                        .font(MoTheme.bodyFont(size: 19).weight(.semibold))
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 26)
+                        .padding(.vertical, 14)
+                        .background(MoTheme.accent, in: Capsule())
                     }
-                    .font(MoTheme.bodyFont(size: 19).weight(.semibold))
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, 26)
-                    .padding(.vertical, 14)
-                    .background(MoTheme.accent, in: Capsule())
                 }
-                .padding(.horizontal, 28)
-                .padding(.bottom, 26)
+                .padding(18)
+                .background(
+                    RoundedRectangle(cornerRadius: 26, style: .continuous)
+                        .fill(MoTheme.cardBackground.opacity(0.96))
+                        .shadow(color: MoTheme.shadow, radius: 14, x: 0, y: 7)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 26, style: .continuous)
+                        .stroke(MoTheme.accent.opacity(0.16), lineWidth: 1)
+                )
+                .padding(.horizontal, 22)
+                .padding(.bottom, 20)
             }
             .padding(.top, 20)
         }
@@ -194,70 +222,81 @@ private struct OnboardingPageView: View {
     let page: OnboardingPage
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Spacer(minLength: 0)
+        ScrollView(showsIndicators: false) {
+            VStack(alignment: .leading, spacing: 20) {
+                Image(systemName: "circle.hexagongrid.fill")
+                    .font(.system(size: 28))
+                    .foregroundStyle(MoTheme.accent.opacity(0.9))
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.bottom, 4)
 
-            Image(systemName: "circle.hexagongrid.fill")
-                .font(.system(size: 28))
-                .foregroundStyle(MoTheme.accent.opacity(0.9))
-                .frame(maxWidth: .infinity, alignment: .center)
-                .padding(.bottom, 4)
+                Text(page.title)
+                    .font(MoTheme.headingFont(size: 36))
+                    .foregroundStyle(MoTheme.primaryText)
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
-            Text(page.title)
-                .font(MoTheme.headingFont(size: 36))
-                .foregroundStyle(MoTheme.primaryText)
-                .frame(maxWidth: .infinity, alignment: .leading)
-
-            VStack(alignment: .leading, spacing: 14) {
-                ForEach(page.paragraphs, id: \.self) { paragraph in
-                    Text(paragraph)
-                        .font(MoTheme.bodyFont(size: 20))
-                        .foregroundStyle(MoTheme.primaryText.opacity(0.95))
-                        .lineSpacing(7)
-                }
-
-                if !page.bullets.isEmpty {
-                    VStack(alignment: .leading, spacing: 10) {
-                        ForEach(page.bullets, id: \.self) { item in
-                            Text("• \(item)")
-                                .font(MoTheme.bodyFont(size: 19))
-                                .foregroundStyle(MoTheme.primaryText.opacity(0.95))
-                        }
+                VStack(alignment: .leading, spacing: 14) {
+                    ForEach(page.paragraphs, id: \.self) { paragraph in
+                        Text(paragraph)
+                            .font(MoTheme.bodyFont(size: 20))
+                            .foregroundStyle(MoTheme.primaryText.opacity(0.95))
+                            .lineSpacing(7)
+                            .multilineTextAlignment(.leading)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .padding(.leading, 2)
-                }
 
-                if let examplesTitle = page.examplesTitle {
-                    Text(examplesTitle)
-                        .font(MoTheme.bodyFont(size: 19).weight(.medium))
-                        .foregroundStyle(MoTheme.secondaryText)
-                        .padding(.top, 4)
-                }
-
-                if !page.examples.isEmpty {
-                    VStack(alignment: .leading, spacing: 10) {
-                        ForEach(page.examples, id: \.self) { item in
-                            Text("• \(item)")
-                                .font(MoTheme.bodyFont(size: 19))
-                                .foregroundStyle(MoTheme.primaryText.opacity(0.95))
+                    if !page.bullets.isEmpty {
+                        VStack(alignment: .leading, spacing: 10) {
+                            ForEach(page.bullets, id: \.self) { item in
+                                Text("• \(item)")
+                                    .font(MoTheme.bodyFont(size: 19))
+                                    .foregroundStyle(MoTheme.primaryText.opacity(0.95))
+                                    .multilineTextAlignment(.leading)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
                         }
+                        .padding(.leading, 2)
                     }
-                    .padding(.leading, 2)
-                }
 
-                if let closing = page.closing {
-                    Text(closing)
-                        .font(MoTheme.bodyFont(size: 20))
-                        .foregroundStyle(MoTheme.primaryText.opacity(0.95))
-                        .lineSpacing(7)
-                        .padding(.top, 4)
+                    if let examplesTitle = page.examplesTitle {
+                        Text(examplesTitle)
+                            .font(MoTheme.bodyFont(size: 19).weight(.medium))
+                            .foregroundStyle(MoTheme.secondaryText)
+                            .padding(.top, 4)
+                    }
+
+                    if !page.examples.isEmpty {
+                        VStack(alignment: .leading, spacing: 10) {
+                            ForEach(page.examples, id: \.self) { item in
+                                Text("• \(item)")
+                                    .font(MoTheme.bodyFont(size: 19))
+                                    .foregroundStyle(MoTheme.primaryText.opacity(0.95))
+                                    .multilineTextAlignment(.leading)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                        }
+                        .padding(.leading, 2)
+                    }
+
+                    if let closing = page.closing {
+                        Text(closing)
+                            .font(MoTheme.bodyFont(size: 20))
+                            .foregroundStyle(MoTheme.primaryText.opacity(0.95))
+                            .lineSpacing(7)
+                            .multilineTextAlignment(.leading)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.top, 4)
+                    }
                 }
             }
-
-            Spacer(minLength: 0)
+            .padding(.horizontal, 30)
+            .padding(.vertical, 28)
+            .frame(maxWidth: .infinity, alignment: .topLeading)
         }
-        .padding(.horizontal, 30)
-        .padding(.vertical, 28)
     }
 }
 
