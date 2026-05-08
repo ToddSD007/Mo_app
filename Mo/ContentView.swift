@@ -1,12 +1,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.scenePhase) private var scenePhase
     @StateObject private var viewModel = MoAppViewModel.makeLive()
     @AppStorage("shouldSkipOnboarding") private var shouldSkipOnboarding = false
 
     @State private var navigationPath: [AppMenuDestination] = []
     @State private var showsMenu = false
     @State private var showsOnboarding = false
+    @State private var hasHandledInitialOpen = false
+    @State private var shouldPrepareOnNextActive = false
 
     var body: some View {
         NavigationStack(path: $navigationPath) {
@@ -32,6 +35,8 @@ struct ContentView: View {
                     HowToConsultView()
                 case .entries:
                     EntriesView()
+                case .readings:
+                    SavedReadingsView(viewModel: viewModel)
                 }
             }
             .sheet(isPresented: $showsMenu) {
@@ -47,11 +52,42 @@ struct ContentView: View {
                 }
             }
             .onAppear {
-                if !shouldSkipOnboarding {
-                    showsOnboarding = true
-                }
+                handleInitialOpenIfNeeded()
+            }
+            .onChange(of: scenePhase) { _, newPhase in
+                handleScenePhaseChange(newPhase)
             }
         }
+    }
+
+    private func handleInitialOpenIfNeeded() {
+        guard !hasHandledInitialOpen else {
+            return
+        }
+
+        hasHandledInitialOpen = true
+        prepareForOpen()
+    }
+
+    private func handleScenePhaseChange(_ newPhase: ScenePhase) {
+        switch newPhase {
+        case .active:
+            if shouldPrepareOnNextActive {
+                prepareForOpen()
+                shouldPrepareOnNextActive = false
+            }
+        case .inactive, .background:
+            shouldPrepareOnNextActive = true
+        @unknown default:
+            break
+        }
+    }
+
+    private func prepareForOpen() {
+        navigationPath = []
+        showsMenu = false
+        viewModel.prepareForAppOpen()
+        showsOnboarding = !shouldSkipOnboarding
     }
 }
 

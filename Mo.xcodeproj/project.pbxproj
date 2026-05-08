@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		950ECE712FAD63400026015F /* SavedReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950ECE702FAD63400026015F /* SavedReading.swift */; };
+		950ECE732FAD634B0026015F /* SavedReadingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950ECE722FAD634B0026015F /* SavedReadingStore.swift */; };
+		950ECE752FAD63AB0026015F /* SavedReadingsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950ECE742FAD63AB0026015F /* SavedReadingsViews.swift */; };
 		955CB7342F7B5F15006B2F5F /* FoundationLayerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955CB7332F7B5F15006B2F5F /* FoundationLayerViews.swift */; };
 		A10000000000000000000001 /* MoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000001 /* MoApp.swift */; };
 		A10000000000000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000002 /* ContentView.swift */; };
@@ -27,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		950ECE702FAD63400026015F /* SavedReading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedReading.swift; sourceTree = "<group>"; };
+		950ECE722FAD634B0026015F /* SavedReadingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedReadingStore.swift; sourceTree = "<group>"; };
+		950ECE742FAD63AB0026015F /* SavedReadingsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedReadingsViews.swift; sourceTree = "<group>"; };
 		955CB7332F7B5F15006B2F5F /* FoundationLayerViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationLayerViews.swift; sourceTree = "<group>"; };
 		A20000000000000000000001 /* MoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoApp.swift; sourceTree = "<group>"; };
 		A20000000000000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +96,7 @@
 				A20000000000000000000003 /* Interpretation.swift */,
 				A20000000000000000000004 /* MoEntry.swift */,
 				A20000000000000000000005 /* MoReading.swift */,
+				950ECE702FAD63400026015F /* SavedReading.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -109,6 +116,7 @@
 				A20000000000000000000008 /* RitualView.swift */,
 				A20000000000000000000009 /* ResultView.swift */,
 				955CB7332F7B5F15006B2F5F /* FoundationLayerViews.swift */,
+				950ECE742FAD63AB0026015F /* SavedReadingsViews.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -136,6 +144,7 @@
 				A2000000000000000000000C /* MoEntryLoader.swift */,
 				A2000000000000000000000D /* MoRepository.swift */,
 				A2000000000000000000000E /* MoTheme.swift */,
+				950ECE722FAD634B0026015F /* SavedReadingStore.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -220,14 +229,17 @@
 			files = (
 				A10000000000000000000002 /* ContentView.swift in Sources */,
 				A10000000000000000000007 /* HomeView.swift in Sources */,
+				950ECE732FAD634B0026015F /* SavedReadingStore.swift in Sources */,
 				A10000000000000000000003 /* Interpretation.swift in Sources */,
 				A1000000000000000000000C /* MoEntryLoader.swift in Sources */,
+				950ECE752FAD63AB0026015F /* SavedReadingsViews.swift in Sources */,
 				A10000000000000000000004 /* MoEntry.swift in Sources */,
 				A10000000000000000000001 /* MoApp.swift in Sources */,
 				A10000000000000000000006 /* MoAppViewModel.swift in Sources */,
 				A1000000000000000000000D /* MoRepository.swift in Sources */,
 				A10000000000000000000005 /* MoReading.swift in Sources */,
 				A1000000000000000000000E /* MoTheme.swift in Sources */,
+				950ECE712FAD63400026015F /* SavedReading.swift in Sources */,
 				A1000000000000000000000A /* MoTokenView.swift in Sources */,
 				A1000000000000000000000B /* ResultCardView.swift in Sources */,
 				A10000000000000000000009 /* ResultView.swift in Sources */,

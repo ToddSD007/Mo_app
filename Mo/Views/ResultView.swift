@@ -3,6 +3,7 @@ import SwiftUI
 struct ResultView: View {
     @ObservedObject var viewModel: MoAppViewModel
     let onOpenMenu: () -> Void
+    @State private var readingQuestion = ""
 
     var body: some View {
         ZStack {
@@ -48,6 +49,8 @@ struct ResultView: View {
 
                         firmnessSection(reading)
 
+                        saveSection
+
                         SummaryCardView(entry: reading.entry)
 
                         ResultCardView(reading: reading)
@@ -62,6 +65,17 @@ struct ResultView: View {
             }
         }
         .toolbar(.hidden, for: .navigationBar)
+        .alert(
+            "Unable to Save Reading",
+            isPresented: Binding(
+                get: { viewModel.savedReadingErrorMessage != nil },
+                set: { if !$0 { viewModel.savedReadingErrorMessage = nil } }
+            )
+        ) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(viewModel.savedReadingErrorMessage ?? "")
+        }
     }
 
     private var header: some View {
@@ -126,7 +140,65 @@ struct ResultView: View {
         .background(
             RoundedRectangle(cornerRadius: 28, style: .continuous)
                 .fill(MoTheme.cardBackground)
-                .shadow(color: MoTheme.shadow, radius: 16, x: 0, y: 7)
+            .shadow(color: MoTheme.shadow, radius: 16, x: 0, y: 7)
+        )
+    }
+
+    private var saveSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack(spacing: 14) {
+                Image(systemName: viewModel.isCurrentReadingSaved ? "checkmark.circle.fill" : "bookmark")
+                    .font(.system(size: 22, weight: .medium))
+                    .foregroundStyle(MoTheme.accent)
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(viewModel.isCurrentReadingSaved ? "Reading Saved" : "Save Reading")
+                        .font(MoTheme.bodyFont(size: 19).weight(.medium))
+                        .foregroundStyle(MoTheme.primaryText)
+
+                    Text(viewModel.isCurrentReadingSaved ? "This reading is in your saved readings." : "Keep this reading for later reflection.")
+                        .font(MoTheme.bodyFont(size: 15))
+                        .foregroundStyle(MoTheme.secondaryText)
+                        .multilineTextAlignment(.leading)
+                }
+
+                Spacer(minLength: 0)
+            }
+
+            if !viewModel.isCurrentReadingSaved {
+                TextField("Question or note (optional)", text: $readingQuestion)
+                    .font(MoTheme.bodyFont(size: 17))
+                    .textInputAutocapitalization(.sentences)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 12)
+                    .background(
+                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .fill(MoTheme.background)
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .stroke(MoTheme.accent.opacity(0.18), lineWidth: 1)
+                    )
+
+                Button {
+                    viewModel.saveCurrentReading(question: readingQuestion)
+                } label: {
+                    Text("Save")
+                        .font(MoTheme.bodyFont(size: 17).weight(.semibold))
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 13)
+                        .background(MoTheme.accent, in: Capsule())
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(22)
+        .background(
+            RoundedRectangle(cornerRadius: 26, style: .continuous)
+                .fill(MoTheme.cardBackground)
+                .shadow(color: MoTheme.shadow, radius: 14, x: 0, y: 7)
         )
     }
 }

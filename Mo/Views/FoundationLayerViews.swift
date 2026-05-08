@@ -4,6 +4,7 @@ enum AppMenuDestination: Hashable {
     case introduction
     case howToConsult
     case entries
+    case readings
 }
 
 struct HomeMenuSheet: View {
@@ -23,6 +24,10 @@ struct HomeMenuSheet: View {
 
                 menuButton(title: "The 36 Divinations", subtitle: "Browse the full cycle of Mo results as a study reference.") {
                     onSelect(.entries)
+                }
+
+                menuButton(title: "Saved Readings", subtitle: "Return to readings you have chosen to keep.") {
+                    onSelect(.readings)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .topLeading)

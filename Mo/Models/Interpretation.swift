@@ -1,6 +1,6 @@
 import Foundation
 
-struct Interpretation: Decodable {
+struct Interpretation: Codable {
     let meaning: String
     let meaningShort: String
     let spiritualPractice: String

@@ -28,22 +28,39 @@ final class MoAppViewModel: ObservableObject {
 
     @Published private(set) var screen: Screen = .home
     @Published private(set) var currentReading: MoReading?
+    @Published private(set) var savedReadings: [SavedReading]
+    @Published private(set) var currentSavedReadingID: UUID?
+    @Published var savedReadingErrorMessage: String?
     @Published private(set) var ritualPrimaryCast: MoCastPair = .placeholder
     @Published private(set) var ritualSecondaryCast: MoCastPair = .placeholder
     @Published private(set) var ritualSessionID = UUID()
 
     private let repository: MoRepository
+    private let savedReadingStore: SavedReadingStore
     private var pendingReading: MoReading?
 
-    init(repository: MoRepository) {
+    init(
+        repository: MoRepository,
+        savedReadingStore: SavedReadingStore,
+        savedReadings: [SavedReading] = []
+    ) {
         self.repository = repository
+        self.savedReadingStore = savedReadingStore
+        self.savedReadings = savedReadings
     }
 
     static func makeLive() -> MoAppViewModel {
         do {
             let entries = try MoEntryLoader.loadEntries()
             let repository = try MoRepository(entries: entries)
-            return MoAppViewModel(repository: repository)
+            let savedReadingStore = try SavedReadingStore.live()
+            let savedReadings = (try? savedReadingStore.loadReadings()) ?? []
+
+            return MoAppViewModel(
+                repository: repository,
+                savedReadingStore: savedReadingStore,
+                savedReadings: savedReadings
+            )
         } catch {
             fatalError("Failed to bootstrap Mo app data: \(error.localizedDescription)")
         }
@@ -51,6 +68,8 @@ final class MoAppViewModel: ObservableObject {
 
     func beginRitual() {
         currentReading = nil
+        currentSavedReadingID = nil
+        savedReadingErrorMessage = nil
         pendingReading = makePendingReading()
         ritualPrimaryCast = pendingReading?.primaryCast ?? .placeholder
         ritualSecondaryCast = pendingReading?.secondaryCast ?? .placeholder
@@ -88,12 +107,69 @@ final class MoAppViewModel: ObservableObject {
 
     func returnHome() {
         currentReading = nil
+        currentSavedReadingID = nil
+        savedReadingErrorMessage = nil
         pendingReading = nil
         ritualPrimaryCast = .placeholder
         ritualSecondaryCast = .placeholder
+        ritualSessionID = UUID()
 
         withAnimation(.easeInOut(duration: 0.6)) {
             screen = .home
+        }
+    }
+
+    func prepareForAppOpen() {
+        currentReading = nil
+        currentSavedReadingID = nil
+        savedReadingErrorMessage = nil
+        pendingReading = nil
+        ritualPrimaryCast = .placeholder
+        ritualSecondaryCast = .placeholder
+        ritualSessionID = UUID()
+        screen = .home
+    }
+
+    var isCurrentReadingSaved: Bool {
+        currentSavedReadingID != nil
+    }
+
+    func saveCurrentReading(question: String? = nil) {
+        guard let currentReading, currentSavedReadingID == nil else {
+            return
+        }
+
+        let savedReading = SavedReading(reading: currentReading, question: question)
+        let updatedReadings = ([savedReading] + savedReadings).sorted { $0.savedAt > $1.savedAt }
+
+        do {
+            try savedReadingStore.saveReadings(updatedReadings)
+            savedReadings = updatedReadings
+            currentSavedReadingID = savedReading.id
+            savedReadingErrorMessage = nil
+        } catch {
+            savedReadingErrorMessage = "This reading could not be saved. Please try again."
+        }
+    }
+
+    func deleteSavedReadings(at offsets: IndexSet) {
+        var updatedReadings = savedReadings
+        updatedReadings.remove(atOffsets: offsets)
+        persistSavedReadings(updatedReadings)
+    }
+
+    func deleteSavedReading(_ savedReading: SavedReading) {
+        let updatedReadings = savedReadings.filter { $0.id != savedReading.id }
+        persistSavedReadings(updatedReadings)
+    }
+
+    private func persistSavedReadings(_ readings: [SavedReading]) {
+        do {
+            try savedReadingStore.saveReadings(readings)
+            savedReadings = readings.sorted { $0.savedAt > $1.savedAt }
+            savedReadingErrorMessage = nil
+        } catch {
+            savedReadingErrorMessage = "Your saved readings could not be updated. Please try again."
         }
     }
 
@@ -144,7 +220,7 @@ extension MoAppViewModel {
 
     static func makePreview() -> MoAppViewModel {
         let repository = try! MoRepository(entries: [previewEntry])
-        return MoAppViewModel(repository: repository)
+        return MoAppViewModel(repository: repository, savedReadingStore: .preview())
     }
 
     func loadPreviewReading() {

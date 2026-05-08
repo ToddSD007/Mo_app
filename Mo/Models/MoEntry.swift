@@ -1,6 +1,6 @@
 import Foundation
 
-struct MoEntry: Decodable, Identifiable {
+struct MoEntry: Codable, Identifiable {
     let id: Int
     let key: String
     let dice: [Int]
