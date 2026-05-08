@@ -37,6 +37,19 @@ struct ContentView: View {
                     EntriesView()
                 case .readings:
                     SavedReadingsView(viewModel: viewModel)
+                case .bringYourOwnDice:
+                    BringYourOwnDiceView(viewModel: viewModel) {
+                        navigationPath.append(.manualResult)
+                    }
+                case .manualResult:
+                    ResultView(
+                        viewModel: viewModel,
+                        onOpenMenu: { showsMenu = true },
+                        onReturn: {
+                            navigationPath = []
+                            viewModel.returnHome()
+                        }
+                    )
                 }
             }
             .sheet(isPresented: $showsMenu) {

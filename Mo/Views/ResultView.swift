@@ -3,6 +3,7 @@ import SwiftUI
 struct ResultView: View {
     @ObservedObject var viewModel: MoAppViewModel
     let onOpenMenu: () -> Void
+    var onReturn: (() -> Void)?
     @State private var readingQuestion = ""
 
     var body: some View {
@@ -47,7 +48,9 @@ struct ResultView: View {
                             .padding(.top, 8)
                         }
 
-                        firmnessSection(reading)
+                        if let firmness = reading.firmness {
+                            firmnessSection(reading, firmness: firmness)
+                        }
 
                         saveSection
 
@@ -65,6 +68,9 @@ struct ResultView: View {
             }
         }
         .toolbar(.hidden, for: .navigationBar)
+        .onChange(of: viewModel.currentReading?.key) { _, _ in
+            readingQuestion = ""
+        }
         .alert(
             "Unable to Save Reading",
             isPresented: Binding(
@@ -80,7 +86,13 @@ struct ResultView: View {
 
     private var header: some View {
         HStack {
-            Button(action: viewModel.returnHome) {
+            Button {
+                if let onReturn {
+                    onReturn()
+                } else {
+                    viewModel.returnHome()
+                }
+            } label: {
                 Image(systemName: "chevron.left")
                     .font(.system(size: 22, weight: .medium))
                     .foregroundStyle(MoTheme.secondaryText)
@@ -115,25 +127,33 @@ struct ResultView: View {
         .padding(.top, 8)
     }
 
-    private func firmnessSection(_ reading: MoReading) -> some View {
+    private func firmnessSection(_ reading: MoReading, firmness: MoFirmness) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("FIRMNESS")
                 .font(MoTheme.bodyFont(size: 14).weight(.semibold))
                 .tracking(2.8)
                 .foregroundStyle(MoTheme.accent)
 
-            Text(reading.firmness.title)
+            Text(firmness.title)
                 .font(MoTheme.bodyFont(size: 20).weight(.medium))
                 .foregroundStyle(MoTheme.primaryText.opacity(0.95))
 
-            Text(reading.firmness.description)
+            Text(firmness.description)
                 .font(MoTheme.bodyFont(size: 17))
                 .foregroundStyle(MoTheme.secondaryText)
                 .lineSpacing(5)
 
-            Text("Second cast: \(reading.secondaryCast.displaySyllables)")
-                .font(MoTheme.bodyFont(size: 15).weight(.medium))
-                .foregroundStyle(MoTheme.secondaryText.opacity(0.85))
+            if let secondaryCast = reading.secondaryCast {
+                Text("Second cast: \(secondaryCast.displaySyllables)")
+                    .font(MoTheme.bodyFont(size: 15).weight(.medium))
+                    .foregroundStyle(MoTheme.secondaryText.opacity(0.85))
+            }
+
+            if reading.firmnessSource == .manual {
+                Text("Firmness determined from manual cast")
+                    .font(MoTheme.bodyFont(size: 13))
+                    .foregroundStyle(MoTheme.secondaryText.opacity(0.7))
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(24)

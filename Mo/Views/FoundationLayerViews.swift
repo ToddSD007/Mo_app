@@ -5,6 +5,8 @@ enum AppMenuDestination: Hashable {
     case howToConsult
     case entries
     case readings
+    case bringYourOwnDice
+    case manualResult
 }
 
 struct HomeMenuSheet: View {
@@ -28,6 +30,10 @@ struct HomeMenuSheet: View {
 
                 menuButton(title: "Saved Readings", subtitle: "Return to readings you have chosen to keep.") {
                     onSelect(.readings)
+                }
+
+                menuButton(title: "Bring Your Own Dice", subtitle: "Use physical dice to reveal the result.") {
+                    onSelect(.bringYourOwnDice)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .topLeading)

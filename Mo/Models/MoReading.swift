@@ -62,10 +62,16 @@ enum MoFirmnessEvaluator {
     }
 }
 
+enum MoFirmnessSource: String, Codable {
+    case ritual
+    case manual
+}
+
 struct MoReading {
     let primaryCast: MoCastPair
-    let secondaryCast: MoCastPair
-    let firmness: MoFirmness
+    let secondaryCast: MoCastPair?
+    let firmness: MoFirmness?
+    let firmnessSource: MoFirmnessSource?
     let entry: MoEntry
 
     var diceValues: [Int] {

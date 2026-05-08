@@ -182,13 +182,44 @@ final class MoAppViewModel: ObservableObject {
             if let reading = repository.reading(
                 primaryCast: primaryCast,
                 secondaryCast: secondaryCast,
-                firmness: firmness
+                firmness: firmness,
+                firmnessSource: .ritual
             ) {
                 return reading
             }
         }
 
         return nil
+    }
+
+    func revealManualReading(primaryDiceValues: [Int], firmnessDiceValues: [Int]?) {
+        guard primaryDiceValues.count == 2 else {
+            return
+        }
+
+        let primaryCast = repository.castPair(for: primaryDiceValues)
+        let secondaryCast = firmnessDiceValues.map(repository.castPair(for:))
+        let firmness = secondaryCast.map { MoFirmnessEvaluator.evaluate(primary: primaryCast, secondary: $0) }
+
+        guard let reading = repository.reading(
+            primaryCast: primaryCast,
+            secondaryCast: secondaryCast,
+            firmness: firmness,
+            firmnessSource: firmness == nil ? nil : .manual
+        ) else {
+            assertionFailure("Missing entry for manual cast: \(primaryCast.key)")
+            return
+        }
+
+        currentReading = reading
+        currentSavedReadingID = nil
+        savedReadingErrorMessage = nil
+        pendingReading = nil
+        ritualPrimaryCast = .placeholder
+        ritualSecondaryCast = .placeholder
+        ritualSessionID = UUID()
+
+        screen = .result
     }
 
     private func emitHaptic() {
@@ -231,6 +262,7 @@ extension MoAppViewModel {
             primaryCast: primaryCast,
             secondaryCast: secondaryCast,
             firmness: .standard,
+            firmnessSource: .ritual,
             entry: Self.previewEntry
         )
         screen = .result

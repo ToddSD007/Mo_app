@@ -5,8 +5,9 @@ struct SavedReading: Codable, Identifiable {
     let savedAt: Date
     let question: String?
     let primaryCast: MoCastPair
-    let secondaryCast: MoCastPair
-    let firmness: MoFirmness
+    let secondaryCast: MoCastPair?
+    let firmness: MoFirmness?
+    let firmnessSource: MoFirmnessSource?
     let entry: MoEntry
 
     init(
@@ -14,8 +15,9 @@ struct SavedReading: Codable, Identifiable {
         savedAt: Date = Date(),
         question: String? = nil,
         primaryCast: MoCastPair,
-        secondaryCast: MoCastPair,
-        firmness: MoFirmness,
+        secondaryCast: MoCastPair?,
+        firmness: MoFirmness?,
+        firmnessSource: MoFirmnessSource?,
         entry: MoEntry
     ) {
         self.id = id
@@ -24,6 +26,7 @@ struct SavedReading: Codable, Identifiable {
         self.primaryCast = primaryCast
         self.secondaryCast = secondaryCast
         self.firmness = firmness
+        self.firmnessSource = firmnessSource
         self.entry = entry
     }
 
@@ -33,6 +36,7 @@ struct SavedReading: Codable, Identifiable {
             primaryCast: reading.primaryCast,
             secondaryCast: reading.secondaryCast,
             firmness: reading.firmness,
+            firmnessSource: reading.firmnessSource,
             entry: reading.entry
         )
     }

@@ -43,8 +43,9 @@ struct MoRepository {
 
     func reading(
         primaryCast: MoCastPair,
-        secondaryCast: MoCastPair,
-        firmness: MoFirmness
+        secondaryCast: MoCastPair?,
+        firmness: MoFirmness?,
+        firmnessSource: MoFirmnessSource?
     ) -> MoReading? {
         guard let entry = entry(for: primaryCast.key) else {
             return nil
@@ -54,6 +55,7 @@ struct MoRepository {
             primaryCast: primaryCast,
             secondaryCast: secondaryCast,
             firmness: firmness,
+            firmnessSource: firmnessSource,
             entry: entry
         )
     }

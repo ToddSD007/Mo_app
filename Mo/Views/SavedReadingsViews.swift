@@ -161,7 +161,9 @@ struct SavedReadingDetailView: View {
                 }
 
                 savedMetadataSection
-                firmnessSection
+                if let firmness = savedReading.firmness {
+                    firmnessSection(firmness)
+                }
                 SummaryCardView(entry: savedReading.entry)
                 InterpretationCardView(entry: savedReading.entry)
             }
@@ -193,22 +195,30 @@ struct SavedReadingDetailView: View {
         .background(cardBackground)
     }
 
-    private var firmnessSection: some View {
+    private func firmnessSection(_ firmness: MoFirmness) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             sectionTitle("FIRMNESS")
 
-            Text(savedReading.firmness.title)
+            Text(firmness.title)
                 .font(MoTheme.bodyFont(size: 20).weight(.medium))
                 .foregroundStyle(MoTheme.primaryText.opacity(0.95))
 
-            Text(savedReading.firmness.description)
+            Text(firmness.description)
                 .font(MoTheme.bodyFont(size: 17))
                 .foregroundStyle(MoTheme.secondaryText)
                 .lineSpacing(5)
 
-            Text("Second cast: \(savedReading.secondaryCast.displaySyllables)")
-                .font(MoTheme.bodyFont(size: 15).weight(.medium))
-                .foregroundStyle(MoTheme.secondaryText.opacity(0.85))
+            if let secondaryCast = savedReading.secondaryCast {
+                Text("Second cast: \(secondaryCast.displaySyllables)")
+                    .font(MoTheme.bodyFont(size: 15).weight(.medium))
+                    .foregroundStyle(MoTheme.secondaryText.opacity(0.85))
+            }
+
+            if savedReading.firmnessSource == .manual {
+                Text("Firmness determined from manual cast")
+                    .font(MoTheme.bodyFont(size: 13))
+                    .foregroundStyle(MoTheme.secondaryText.opacity(0.7))
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(24)
