@@ -12,6 +12,8 @@
 		950ECE752FAD63AB0026015F /* SavedReadingsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950ECE742FAD63AB0026015F /* SavedReadingsViews.swift */; };
 		950ECE772FAD79C10026015F /* bring-your-own-dice-user-instructions.md in Resources */ = {isa = PBXBuildFile; fileRef = 950ECE762FAD79C10026015F /* bring-your-own-dice-user-instructions.md */; };
 		950ECE792FAD79F50026015F /* BringYourOwnDiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950ECE782FAD79F50026015F /* BringYourOwnDiceView.swift */; };
+		950ECE7B2FAEB7730026015F /* BookmarkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950ECE7A2FAEB7730026015F /* BookmarkStore.swift */; };
+		950ECE7D2FAEB8500026015F /* BookmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950ECE7C2FAEB8500026015F /* BookmarksView.swift */; };
 		955CB7342F7B5F15006B2F5F /* FoundationLayerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955CB7332F7B5F15006B2F5F /* FoundationLayerViews.swift */; };
 		A10000000000000000000001 /* MoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000001 /* MoApp.swift */; };
 		A10000000000000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000002 /* ContentView.swift */; };
@@ -37,6 +39,8 @@
 		950ECE742FAD63AB0026015F /* SavedReadingsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedReadingsViews.swift; sourceTree = "<group>"; };
 		950ECE762FAD79C10026015F /* bring-your-own-dice-user-instructions.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "bring-your-own-dice-user-instructions.md"; sourceTree = "<group>"; };
 		950ECE782FAD79F50026015F /* BringYourOwnDiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BringYourOwnDiceView.swift; sourceTree = "<group>"; };
+		950ECE7A2FAEB7730026015F /* BookmarkStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkStore.swift; sourceTree = "<group>"; };
+		950ECE7C2FAEB8500026015F /* BookmarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksView.swift; sourceTree = "<group>"; };
 		955CB7332F7B5F15006B2F5F /* FoundationLayerViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationLayerViews.swift; sourceTree = "<group>"; };
 		A20000000000000000000001 /* MoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoApp.swift; sourceTree = "<group>"; };
 		A20000000000000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 				955CB7332F7B5F15006B2F5F /* FoundationLayerViews.swift */,
 				950ECE742FAD63AB0026015F /* SavedReadingsViews.swift */,
 				950ECE782FAD79F50026015F /* BringYourOwnDiceView.swift */,
+				950ECE7C2FAEB8500026015F /* BookmarksView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 				A2000000000000000000000D /* MoRepository.swift */,
 				A2000000000000000000000E /* MoTheme.swift */,
 				950ECE722FAD634B0026015F /* SavedReadingStore.swift */,
+				950ECE7A2FAEB7730026015F /* BookmarkStore.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -239,6 +245,7 @@
 				950ECE732FAD634B0026015F /* SavedReadingStore.swift in Sources */,
 				A10000000000000000000003 /* Interpretation.swift in Sources */,
 				A1000000000000000000000C /* MoEntryLoader.swift in Sources */,
+				950ECE7B2FAEB7730026015F /* BookmarkStore.swift in Sources */,
 				950ECE752FAD63AB0026015F /* SavedReadingsViews.swift in Sources */,
 				A10000000000000000000004 /* MoEntry.swift in Sources */,
 				950ECE792FAD79F50026015F /* BringYourOwnDiceView.swift in Sources */,
@@ -249,6 +256,7 @@
 				A1000000000000000000000E /* MoTheme.swift in Sources */,
 				950ECE712FAD63400026015F /* SavedReading.swift in Sources */,
 				A1000000000000000000000A /* MoTokenView.swift in Sources */,
+				950ECE7D2FAEB8500026015F /* BookmarksView.swift in Sources */,
 				A1000000000000000000000B /* ResultCardView.swift in Sources */,
 				A10000000000000000000009 /* ResultView.swift in Sources */,
 				955CB7342F7B5F15006B2F5F /* FoundationLayerViews.swift in Sources */,

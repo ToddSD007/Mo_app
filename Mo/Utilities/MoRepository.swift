@@ -41,6 +41,11 @@ struct MoRepository {
         entriesByKey[key]
     }
 
+    func entries(for keys: Set<String>) -> [MoEntry] {
+        keys.compactMap { entriesByKey[$0] }
+            .sorted { $0.id < $1.id }
+    }
+
     func reading(
         primaryCast: MoCastPair,
         secondaryCast: MoCastPair?,

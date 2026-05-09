@@ -34,9 +34,11 @@ struct ContentView: View {
                 case .howToConsult:
                     HowToConsultView()
                 case .entries:
-                    EntriesView()
+                    EntriesView(viewModel: viewModel)
                 case .readings:
                     SavedReadingsView(viewModel: viewModel)
+                case .bookmarks:
+                    BookmarksView(viewModel: viewModel)
                 case .bringYourOwnDice:
                     BringYourOwnDiceView(viewModel: viewModel) {
                         navigationPath.append(.manualResult)

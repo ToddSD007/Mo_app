@@ -8,7 +8,8 @@ The app prioritizes clarity, calmness, and ritual integrity over speed, gamifica
 
 - Phase 0 MVP: complete
 - Phase 1 Foundation Layer: complete
-- Phase 2 Personal Practice Layer: next
+- Phase 2 Personal Practice Layer: complete
+- Phase 3 Reflection Layer: next
 
 ## Current Features
 
@@ -20,6 +21,10 @@ The app prioritizes clarity, calmness, and ritual integrity over speed, gamifica
 - First-launch onboarding with an explicit "Don't show this again" option
 - Introduction and "How to Consult the Mo" foundation content
 - 36-entry browser for study and reference
+- Saved readings with optional user questions
+- Saved reading detail view
+- Manual "bring your own dice" casting flow
+- Bookmarks for saved readings and study entries
 
 ## Project Structure
 
@@ -55,11 +60,12 @@ The project is implemented in SwiftUI and does not require external package depe
 
 ## Roadmap
 
-Phase 2 is focused on the personal practice layer:
+Phase 2 completed the personal practice layer:
 
 - saved readings
 - reading detail history
 - optional user questions
 - manual "bring your own dice" casting
-- favorites or bookmarks
+- bookmarks for saved readings and study entries
 
+Phase 3 will focus on the reflection layer.

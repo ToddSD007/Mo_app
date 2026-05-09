@@ -5,6 +5,7 @@ enum AppMenuDestination: Hashable {
     case howToConsult
     case entries
     case readings
+    case bookmarks
     case bringYourOwnDice
     case manualResult
 }
@@ -30,6 +31,10 @@ struct HomeMenuSheet: View {
 
                 menuButton(title: "Saved Readings", subtitle: "Return to readings you have chosen to keep.") {
                     onSelect(.readings)
+                }
+
+                menuButton(title: "Bookmarks", subtitle: "Return to readings and entries you have marked for deeper reflection.") {
+                    onSelect(.bookmarks)
                 }
 
                 menuButton(title: "Bring Your Own Dice", subtitle: "Use physical dice to reveal the result.") {
@@ -623,6 +628,7 @@ private struct EditorialArticleView: View {
 }
 
 struct EntriesView: View {
+    @ObservedObject var viewModel: MoAppViewModel
     @State private var searchText = ""
 
     private let entries: [MoEntry] = {
@@ -660,7 +666,7 @@ struct EntriesView: View {
                 LazyVStack(spacing: 14) {
                     ForEach(filteredEntries) { entry in
                         NavigationLink {
-                            EntryDetailView(entry: entry)
+                            EntryDetailView(entry: entry, viewModel: viewModel)
                         } label: {
                             EntryRowView(entry: entry)
                         }
@@ -686,8 +692,9 @@ struct EntriesView: View {
     }
 }
 
-private struct EntryRowView: View {
+struct EntryRowView: View {
     let entry: MoEntry
+    var showsChevron = true
 
     var body: some View {
         HStack(alignment: .top, spacing: 14) {
@@ -710,10 +717,12 @@ private struct EntryRowView: View {
 
             Spacer(minLength: 0)
 
-            Image(systemName: "chevron.right")
-                .font(.system(size: 14, weight: .semibold))
-                .foregroundStyle(MoTheme.secondaryText.opacity(0.7))
-                .padding(.top, 4)
+            if showsChevron {
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(MoTheme.secondaryText.opacity(0.7))
+                    .padding(.top, 4)
+            }
         }
         .padding(18)
         .background(
@@ -726,6 +735,7 @@ private struct EntryRowView: View {
 
 struct EntryDetailView: View {
     let entry: MoEntry
+    @ObservedObject var viewModel: MoAppViewModel
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -755,6 +765,8 @@ struct EntryDetailView: View {
                             .foregroundStyle(MoTheme.accent)
                     }
                     .padding(.top, 8)
+
+                    bookmarkButton
                 }
 
                 SummaryCardView(entry: entry)
@@ -765,5 +777,39 @@ struct EntryDetailView: View {
             .padding(.bottom, 42)
         }
         .background(MoTheme.background.ignoresSafeArea())
+        .alert(
+            "Unable to Update Bookmark",
+            isPresented: Binding(
+                get: { viewModel.bookmarkErrorMessage != nil },
+                set: { if !$0 { viewModel.bookmarkErrorMessage = nil } }
+            )
+        ) {
+            Button("OK", role: .cancel) { viewModel.bookmarkErrorMessage = nil }
+        } message: {
+            Text(viewModel.bookmarkErrorMessage ?? "")
+        }
+    }
+
+    private var bookmarkButton: some View {
+        let isBookmarked = viewModel.isEntryBookmarked(entry)
+
+        return Button {
+            viewModel.toggleEntryBookmark(entry)
+        } label: {
+            Label(
+                isBookmarked ? "Bookmarked" : "Bookmark Entry",
+                systemImage: isBookmarked ? "bookmark.fill" : "bookmark"
+            )
+            .font(MoTheme.bodyFont(size: 17).weight(.semibold))
+            .foregroundStyle(isBookmarked ? MoTheme.accent : MoTheme.primaryText)
+            .padding(.horizontal, 18)
+            .padding(.vertical, 12)
+            .background(
+                Capsule()
+                    .fill(MoTheme.cardBackground)
+                    .shadow(color: MoTheme.shadow, radius: 10, x: 0, y: 5)
+            )
+        }
+        .buttonStyle(.plain)
     }
 }

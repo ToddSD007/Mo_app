@@ -19,7 +19,7 @@ struct SavedReadingsView: View {
                 } else {
                     ForEach(viewModel.savedReadings) { reading in
                         NavigationLink {
-                            SavedReadingDetailView(savedReading: reading)
+                            SavedReadingDetailView(savedReading: reading, viewModel: viewModel)
                         } label: {
                             SavedReadingRowView(savedReading: reading)
                         }
@@ -80,7 +80,7 @@ struct SavedReadingsView: View {
     }
 }
 
-private struct SavedReadingRowView: View {
+struct SavedReadingRowView: View {
     let savedReading: SavedReading
 
     var body: some View {
@@ -124,6 +124,11 @@ private struct SavedReadingRowView: View {
 
 struct SavedReadingDetailView: View {
     let savedReading: SavedReading
+    @ObservedObject var viewModel: MoAppViewModel
+
+    private var currentSavedReading: SavedReading {
+        viewModel.savedReadings.first { $0.id == savedReading.id } ?? savedReading
+    }
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -158,6 +163,8 @@ struct SavedReadingDetailView: View {
                             .foregroundStyle(MoTheme.accent)
                     }
                     .padding(.top, 8)
+
+                    bookmarkButton
                 }
 
                 savedMetadataSection
@@ -172,17 +179,49 @@ struct SavedReadingDetailView: View {
             .padding(.bottom, 42)
         }
         .background(MoTheme.background.ignoresSafeArea())
+        .alert(
+            "Unable to Update Bookmark",
+            isPresented: Binding(
+                get: { viewModel.savedReadingErrorMessage != nil },
+                set: { if !$0 { viewModel.savedReadingErrorMessage = nil } }
+            )
+        ) {
+            Button("OK", role: .cancel) { viewModel.savedReadingErrorMessage = nil }
+        } message: {
+            Text(viewModel.savedReadingErrorMessage ?? "")
+        }
+    }
+
+    private var bookmarkButton: some View {
+        Button {
+            viewModel.toggleSavedReadingBookmark(currentSavedReading)
+        } label: {
+            Label(
+                currentSavedReading.isBookmarked ? "Bookmarked" : "Bookmark Reading",
+                systemImage: currentSavedReading.isBookmarked ? "bookmark.fill" : "bookmark"
+            )
+            .font(MoTheme.bodyFont(size: 17).weight(.semibold))
+            .foregroundStyle(currentSavedReading.isBookmarked ? MoTheme.accent : MoTheme.primaryText)
+            .padding(.horizontal, 18)
+            .padding(.vertical, 12)
+            .background(
+                Capsule()
+                    .fill(MoTheme.cardBackground)
+                    .shadow(color: MoTheme.shadow, radius: 10, x: 0, y: 5)
+            )
+        }
+        .buttonStyle(.plain)
     }
 
     private var savedMetadataSection: some View {
         VStack(alignment: .leading, spacing: 10) {
             sectionTitle("SAVED")
 
-            Text(savedReading.savedAt.formatted(date: .complete, time: .shortened))
+            Text(currentSavedReading.savedAt.formatted(date: .complete, time: .shortened))
                 .font(MoTheme.bodyFont(size: 18))
                 .foregroundStyle(MoTheme.primaryText.opacity(0.95))
 
-            if let question = savedReading.question {
+            if let question = currentSavedReading.question {
                 Text(question)
                     .font(MoTheme.bodyFont(size: 19))
                     .foregroundStyle(MoTheme.primaryText.opacity(0.95))

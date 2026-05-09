@@ -30,23 +30,30 @@ final class MoAppViewModel: ObservableObject {
     @Published private(set) var currentReading: MoReading?
     @Published private(set) var savedReadings: [SavedReading]
     @Published private(set) var currentSavedReadingID: UUID?
+    @Published private(set) var bookmarkedEntryKeys: Set<String>
     @Published var savedReadingErrorMessage: String?
+    @Published var bookmarkErrorMessage: String?
     @Published private(set) var ritualPrimaryCast: MoCastPair = .placeholder
     @Published private(set) var ritualSecondaryCast: MoCastPair = .placeholder
     @Published private(set) var ritualSessionID = UUID()
 
     private let repository: MoRepository
     private let savedReadingStore: SavedReadingStore
+    private let bookmarkStore: BookmarkStore
     private var pendingReading: MoReading?
 
     init(
         repository: MoRepository,
         savedReadingStore: SavedReadingStore,
-        savedReadings: [SavedReading] = []
+        bookmarkStore: BookmarkStore,
+        savedReadings: [SavedReading] = [],
+        bookmarkedEntryKeys: Set<String> = []
     ) {
         self.repository = repository
         self.savedReadingStore = savedReadingStore
+        self.bookmarkStore = bookmarkStore
         self.savedReadings = savedReadings
+        self.bookmarkedEntryKeys = bookmarkedEntryKeys
     }
 
     static func makeLive() -> MoAppViewModel {
@@ -54,12 +61,16 @@ final class MoAppViewModel: ObservableObject {
             let entries = try MoEntryLoader.loadEntries()
             let repository = try MoRepository(entries: entries)
             let savedReadingStore = try SavedReadingStore.live()
+            let bookmarkStore = try BookmarkStore.live()
             let savedReadings = (try? savedReadingStore.loadReadings()) ?? []
+            let bookmarkedEntryKeys = (try? bookmarkStore.loadEntryKeys()) ?? []
 
             return MoAppViewModel(
                 repository: repository,
                 savedReadingStore: savedReadingStore,
-                savedReadings: savedReadings
+                bookmarkStore: bookmarkStore,
+                savedReadings: savedReadings,
+                bookmarkedEntryKeys: bookmarkedEntryKeys
             )
         } catch {
             fatalError("Failed to bootstrap Mo app data: \(error.localizedDescription)")
@@ -70,6 +81,7 @@ final class MoAppViewModel: ObservableObject {
         currentReading = nil
         currentSavedReadingID = nil
         savedReadingErrorMessage = nil
+        bookmarkErrorMessage = nil
         pendingReading = makePendingReading()
         ritualPrimaryCast = pendingReading?.primaryCast ?? .placeholder
         ritualSecondaryCast = pendingReading?.secondaryCast ?? .placeholder
@@ -109,6 +121,7 @@ final class MoAppViewModel: ObservableObject {
         currentReading = nil
         currentSavedReadingID = nil
         savedReadingErrorMessage = nil
+        bookmarkErrorMessage = nil
         pendingReading = nil
         ritualPrimaryCast = .placeholder
         ritualSecondaryCast = .placeholder
@@ -123,6 +136,7 @@ final class MoAppViewModel: ObservableObject {
         currentReading = nil
         currentSavedReadingID = nil
         savedReadingErrorMessage = nil
+        bookmarkErrorMessage = nil
         pendingReading = nil
         ritualPrimaryCast = .placeholder
         ritualSecondaryCast = .placeholder
@@ -132,6 +146,18 @@ final class MoAppViewModel: ObservableObject {
 
     var isCurrentReadingSaved: Bool {
         currentSavedReadingID != nil
+    }
+
+    var bookmarkedSavedReadings: [SavedReading] {
+        savedReadings.filter(\.isBookmarked)
+    }
+
+    var bookmarkedEntries: [MoEntry] {
+        repository.entries(for: bookmarkedEntryKeys)
+    }
+
+    func isEntryBookmarked(_ entry: MoEntry) -> Bool {
+        bookmarkedEntryKeys.contains(entry.key)
     }
 
     func saveCurrentReading(question: String? = nil) {
@@ -163,6 +189,32 @@ final class MoAppViewModel: ObservableObject {
         persistSavedReadings(updatedReadings)
     }
 
+    func toggleSavedReadingBookmark(_ savedReading: SavedReading) {
+        let updatedReadings = savedReadings.map { reading in
+            guard reading.id == savedReading.id else {
+                return reading
+            }
+
+            var updatedReading = reading
+            updatedReading.isBookmarked.toggle()
+            return updatedReading
+        }
+
+        persistSavedReadings(updatedReadings)
+    }
+
+    func toggleEntryBookmark(_ entry: MoEntry) {
+        var updatedKeys = bookmarkedEntryKeys
+
+        if updatedKeys.contains(entry.key) {
+            updatedKeys.remove(entry.key)
+        } else {
+            updatedKeys.insert(entry.key)
+        }
+
+        persistEntryBookmarks(updatedKeys)
+    }
+
     private func persistSavedReadings(_ readings: [SavedReading]) {
         do {
             try savedReadingStore.saveReadings(readings)
@@ -170,6 +222,16 @@ final class MoAppViewModel: ObservableObject {
             savedReadingErrorMessage = nil
         } catch {
             savedReadingErrorMessage = "Your saved readings could not be updated. Please try again."
+        }
+    }
+
+    private func persistEntryBookmarks(_ entryKeys: Set<String>) {
+        do {
+            try bookmarkStore.saveEntryKeys(entryKeys)
+            bookmarkedEntryKeys = entryKeys
+            bookmarkErrorMessage = nil
+        } catch {
+            bookmarkErrorMessage = "Your bookmarks could not be updated. Please try again."
         }
     }
 
@@ -214,6 +276,7 @@ final class MoAppViewModel: ObservableObject {
         currentReading = reading
         currentSavedReadingID = nil
         savedReadingErrorMessage = nil
+        bookmarkErrorMessage = nil
         pendingReading = nil
         ritualPrimaryCast = .placeholder
         ritualSecondaryCast = .placeholder
@@ -251,7 +314,7 @@ extension MoAppViewModel {
 
     static func makePreview() -> MoAppViewModel {
         let repository = try! MoRepository(entries: [previewEntry])
-        return MoAppViewModel(repository: repository, savedReadingStore: .preview())
+        return MoAppViewModel(repository: repository, savedReadingStore: .preview(), bookmarkStore: .preview())
     }
 
     func loadPreviewReading() {
